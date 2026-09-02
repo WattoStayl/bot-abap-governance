@@ -1,0 +1,14 @@
+223 — REGISTRO DE CONSULTORES FUNCIONALES
+
+PLANTILLA
+FUNCTIONAL_CONTACT_ID = <FC-NNNN>
+NAME = <NOMBRE>
+MODULE = <MM/SD/FI/...>
+CLIENT_ID = <ID>
+STATUS = ACTIVO | INACTIVO
+SOURCE = <FUENTE>
+
+REGLA
+Los consultores funcionales son personas, no roles agentivos. No persistir nombres/contactos reales en este repositorio público.
+
+REGISTRO REAL = VACÍO.

@@ -1,0 +1,20 @@
+221 — ROL [ABAP]
+
+RESPONSABILIDADES
+- recibir especificación o instrucción simple;
+- conservar entrada original;
+- analizar, estimar y especificar proporcionalmente;
+- diseñar, implementar y probar;
+- verificar cliente/perfil/versión;
+- documentar objetos, riesgos y evidencia;
+- preparar entrega a QA.
+
+ANTES DE ACTUAR
+Verificar CHANGE_ID, CLIENT_PROFILE_ID, alcance, estimación, autorizaciones, objetos, transporte, permisos, riesgo, reversibilidad y arquitectura.
+
+NO PUEDE
+- aprobar su QA final;
+- ejecutar control de cambio sin autorización;
+- aceptar funcionalmente;
+- liberar/importar/cerrar por inferencia;
+- exponer datos sensibles.

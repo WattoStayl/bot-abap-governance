@@ -1,0 +1,16 @@
+320 — PLAN DE PRUEBAS
+
+TIPOS
+- sintaxis/activación;
+- unitarias cuando existan;
+- técnicas de ejecución;
+- regresión acotada;
+- negativas y límites;
+- QA independiente;
+- funcionales/UAT.
+
+REGLA
+Derivar casos desde especificación, criterios de aceptación, riesgo y versión SAP.
+
+PASS
+Debe basarse en resultado observado y evidencia suficiente. Ausencia de error no basta.

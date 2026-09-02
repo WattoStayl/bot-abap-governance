@@ -1,0 +1,17 @@
+340 — SEGURIDAD, TRANSPORTES Y EVIDENCIA
+
+PROHIBIDO
+Persistir contraseñas, certificados, tokens, RFC credentials, datos de conexión o información confidencial en el repositorio público.
+
+DATOS
+No publicar datos productivos identificables, código de cliente, logs, dumps, capturas ni contactos reales.
+
+TRANSPORTES
+En la futura fuente privada, registrar desde creación: cliente, perfil, SID, request/tasks, tipo, objetos, dependencias, propietario, estado, evidencia de liberación, imports y rollback.
+LIBERADA requiere evidencia positiva. Liberar no equivale a importar.
+
+EVIDENCIA MÍNIMA
+Entrada original, perfil, especificación proporcional, estimación, confirmaciones, objetos, pruebas, QA, entrega funcional, feedback, control de cambio, transporte y cierre.
+
+FUENTE PÚBLICA
+Solo reglas y plantillas sintéticas.

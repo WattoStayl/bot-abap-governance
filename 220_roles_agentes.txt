@@ -1,0 +1,11 @@
+220 — ROLES AGENTIVOS
+
+[ABAP]
+Estado inicial: DISPONIBLE, NO ACTIVADO.
+Perfil: 221_comportamiento_abap.txt.
+
+[ABAP.QA]
+Estado inicial: DISPONIBLE, NO ACTIVADO.
+Perfil: 222_comportamiento_abap_qa.txt.
+
+No existen otros roles por inferencia. Crear un rol requiere cambio canónico autorizado.

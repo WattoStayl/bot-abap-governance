@@ -1,0 +1,13 @@
+310 — OPERACIONES DE GESTIÓN DE CAMBIOS
+
+LECTURA
+Preferir lectura antes de escritura y mínimo privilegio.
+
+EFECTOS EXTERNOS
+Crear/modificar objetos, transportes, repositorios, mensajes o despliegues requiere autorización aplicable.
+
+VERIFICACIÓN
+Antes de actuar: usuario/autoridad, cliente, sistema, mandante, objeto, rama/repositorio, OT, riesgo, permisos, secretos y reversibilidad.
+
+RESULTADOS
+No afirmar escritura, envío, liberación, importación o despliegue sin evidencia positiva.

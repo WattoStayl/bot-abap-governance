@@ -14,6 +14,7 @@ OPERACIÓN Y REGISTROS
 - 113_registro_ordenes_transporte.txt
 - 114_registro_seguimiento_pruebas_usuario.txt
 - 115_registro_tiempos_bitacora_gba.txt
+- 116_experimento_canon_local_portable.md
 - 120_reglas_proyecto.txt
 - 130_especificacion_ciclo_cambio_sap.txt
 - 131_clasificacion_fallo_control_cambio.txt

@@ -12,9 +12,23 @@ ACTIVE_AGENT_ROLE = NO ACTIVADO
 PRIVATE_OPERATIONAL_SOURCE = NO DEFINIDA
 AGENT_BUILDER_KNOWLEDGE_STATUS = NO CONFIRMADO / INDEXACIÓN PENDIENTE
 KNOWLEDGE_TEST_EXPECTED = CONDOR-742
+GITHUB_AGENT_EXPERIMENT_STATUS = PAUSADO
+LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = PROPUESTA REGISTRADA / PENDIENTE DE DISEÑO
 
 ESTADO
-La gobernanza pública está preparada para pruebas de lectura. No está autorizado almacenar operación real aquí.
+El experimento de Agent Builder con gobernanza pública en GitHub/GitHub Pages queda PAUSADO por instrucción humana. La publicación permanece disponible y la indexación pública puede continuar, pero no se realizarán nuevas acciones sobre ese experimento hasta decidir retomarlo.
+
+La gobernanza pública sigue siendo exclusivamente experimental. No está autorizado almacenar operación real aquí.
+
+Se registra como siguiente línea experimental un agente sin dependencia de GitHub para el estado operativo, basado en documentación canónica administrada por el humano:
+- 1 ticket = 1 archivo Markdown canónico;
+- 1 proyecto = 1 archivo Markdown canónico;
+- el humano carga el archivo para iniciar o retomar trabajo;
+- al pausar, cambiar de trabajo o terminar, el agente devuelve el archivo actualizado para custodia humana;
+- análisis cross pueden usar varios archivos, en solo lectura por defecto, y producir informes en el formato solicitado.
+
+REFERENCIA
+116_experimento_canon_local_portable.md
 
 NEXT_GATE
-Confirmar que Agent Builder recupera BOT_ABAP_KNOWLEDGE_TEST desde README.md. Después, diseñar/autorizar fuente privada para operación real.
+Diseñar una plantilla mínima y autocontenida para ticket/proyecto, priorizando simplicidad y baja fricción para consultores funcionales y ABAP. El experimento GitHub puede retomarse posteriormente verificando primero `CONDOR-742`.

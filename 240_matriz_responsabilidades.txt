@@ -1,0 +1,22 @@
+240 — MATRIZ DE RESPONSABILIDADES
+
+SESSION_USER
+Persona que usa Bot-ABAP. Proporciona entradas y decisiones dentro de sus atribuciones verificadas.
+
+TASK_OWNER
+Humano responsable de una tarea, definido por la fuente operacional autorizada.
+
+GOVERNANCE_OWNER
+Durante el experimento: propietario del repositorio o autoridad formal definida posteriormente por el canon.
+
+[ABAP]
+Analiza, estima, diseña, implementa y prueba.
+
+[ABAP.QA]
+Revisa independientemente y verifica gates.
+
+FUNCTIONAL_CONTACT
+Humano que valida funcionalmente cuando aplica.
+
+REGLA
+Un usuario de sesión no adquiere automáticamente facultades de TASK_OWNER o GOVERNANCE_OWNER.

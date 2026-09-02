@@ -1,0 +1,17 @@
+900 — CHECKLIST DE PROMOCIÓN CANÓNICA
+
+Antes de promover a main:
+[ ] cambio autorizado por GOVERNANCE_OWNER aplicable
+[ ] sin datos reales/confidenciales
+[ ] README e índice coherentes
+[ ] precedencia sin contradicciones
+[ ] referencias a archivos existentes
+[ ] roles y gates consistentes
+[ ] estado operativo actualizado
+[ ] revisión de seguridad pública
+[ ] commit/PR verificable
+
+Después de promover:
+[ ] verificar main
+[ ] registrar/comunicar SHA
+[ ] comprobar lectura del identificador de conocimiento cuando Agent Builder esté disponible.

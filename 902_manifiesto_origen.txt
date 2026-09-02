@@ -1,0 +1,12 @@
+902 — MANIFIESTO DE ORIGEN
+
+Bot-ABAP Governance es una derivación metodológica independiente creada para experimentar con un agente organizacional SAP ABAP.
+
+ORIGEN DE DISEÑO
+Prácticas aprendidas del proyecto ABAP GBA Governance, versión de referencia disponible al momento de inicialización: gov-v0.2.0.
+
+INDEPENDENCIA
+Bot-ABAP no hereda autoridad, clientes, tickets, perfiles, sistemas, OTs, bitácoras, decisiones, evidencia ni estados de ABAP GBA.
+
+LICENCIA/AUTORIZACIÓN ORGANIZACIONAL
+NO DEFINIDA. Este repositorio se utiliza únicamente como experimento hasta decisión posterior.

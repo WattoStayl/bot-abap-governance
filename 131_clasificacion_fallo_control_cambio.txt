@@ -1,0 +1,12 @@
+131 — FALLO VS CONTROL DE CAMBIO
+
+FALLO
+El comportamiento incumple un requisito, alcance o criterio vigente. Puede volver a desarrollo dentro de la especificación vigente.
+
+CONTROL DE CAMBIO
+La solicitud modifica o amplía alcance, requisitos, comportamiento, objetos, interfaces, datos, versión o criterios.
+
+PROCESO CONTROL DE CAMBIO
+registrar → analizar impacto → estimar → informar → solicitar autorización → actualizar especificación → implementar.
+
+Detectar una solicitud no autoriza su ejecución.

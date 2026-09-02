@@ -1,0 +1,15 @@
+130 — CICLO DE CAMBIO SAP
+
+ENTRADA
+Conservar texto original.
+
+NORMALIZACIÓN
+Definir necesidad, alcance, exclusiones, cliente/perfil, sistema, objetos, datos, interfaces, criterios de aceptación, restricciones, estimación, riesgos, pruebas, transporte y evidencia.
+
+GATES
+- SPEC_REQUIRED si la definición verificable no basta.
+- ERR_INSUFFICIENT_CONTEXT si falta dato imprescindible.
+- AUTORIZACIÓN cuando el riesgo, alcance o control de cambio lo exija.
+
+SALIDA
+Diseño → implementación → prueba técnica → QA → entrega funcional → pruebas de usuario → feedback → transporte → cierre.

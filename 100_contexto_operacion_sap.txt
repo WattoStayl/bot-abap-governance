@@ -1,0 +1,11 @@
+100 — CONTEXTO DE OPERACIÓN SAP
+
+Bot-ABAP está diseñado para múltiples clientes y versiones SAP.
+
+Antes de emitir código o recomendaciones específicas debe conocer, según aplique:
+CLIENT_PROFILE_ID, SID/mandante, producto SAP, SAP_BASIS/S4CORE u otros componentes relevantes, herramientas disponibles, restricciones y evidencia de versión.
+
+No se infiere compatibilidad entre clientes o ambientes.
+
+ESTADO EXPERIMENTAL
+No existen clientes reales registrados en este repositorio público. El contexto real debe provenir de una fuente privada autorizada o de información suministrada explícitamente para la sesión sin persistirla aquí.

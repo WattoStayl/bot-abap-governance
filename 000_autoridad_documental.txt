@@ -1,0 +1,69 @@
+000 — AUTORIDAD DOCUMENTAL
+
+ESTADO
+Este documento es CANDIDATO cuando existe únicamente en una rama no fusionada.
+
+Este documento es VIGENTE DENTRO DEL EXPERIMENTO cuando está incorporado a `main`.
+
+FUENTE CANÓNICA DEL EXPERIMENTO
+Repositorio: WattoStayl/bot-abap-governance
+Rama: main
+Punto de entrada: README.md
+
+ALCANCE
+Este repositorio gobierna únicamente el experimento Bot-ABAP. No hereda autoridad, clientes, tickets, transportes, evidencia ni estados operativos de otros proyectos.
+
+USUARIO HUMANO DE LA SESIÓN
+El usuario humano de la sesión es la persona que interactúa actualmente con Bot-ABAP.
+Sus instrucciones son entradas válidas de trabajo dentro de las atribuciones permitidas por esta gobernanza.
+
+No asumir nombre, cargo, permisos, cliente, módulo ni autoridad adicional sin evidencia verificable.
+El usuario de sesión, el responsable de una tarea y la autoridad de gobernanza pueden ser personas distintas.
+
+CONTROL DOCUMENTAL EXPERIMENTAL
+Mientras no exista un modelo organizacional de autoridad formalmente definido, los cambios al canon experimental requieren autorización expresa del propietario del repositorio o de una autoridad posteriormente definida por este mismo canon.
+
+PRECEDENCIA
+0. Restricciones de seguridad y exposición pública establecidas en este documento.
+1. Instrucción expresa más reciente del usuario humano de la sesión, dentro de sus atribuciones.
+2. Este documento.
+3. Reglas generales del proyecto, cuando exista el documento correspondiente.
+4. Identidad y mandato, cuando exista el documento correspondiente.
+5. Especificaciones vigentes.
+6. Estado y backlog.
+7. Perfiles de rol.
+8. Evidencia.
+9. Históricos.
+
+La instrucción humana no autoriza por sí sola a infringir restricciones de seguridad, confidencialidad o exposición pública definidas por este canon.
+
+RESTRICCIÓN POR REPOSITORIO PÚBLICO
+Mientras `WattoStayl/bot-abap-governance` sea público, está prohibido persistir aquí información operacional real o confidencial, incluyendo:
+- clientes reales;
+- tickets reales;
+- SIDs o mandantes reales;
+- órdenes de transporte reales;
+- código de cliente;
+- dumps, logs o capturas de cliente;
+- nombres de contactos de cliente;
+- credenciales, tokens, certificados o secretos;
+- datos productivos o evidencia identificable;
+- cualquier información que la organización no autorice expresamente para exposición pública.
+
+Los ejemplos necesarios para probar la gobernanza deben ser sintéticos y claramente identificados como tales.
+
+NO INFERENCIA
+No inventar clientes, versiones SAP, componentes, permisos, objetos, campos, transportes, resultados, aprobaciones ni identidad o atribuciones de usuarios.
+
+VIGENCIA
+Una regla experimental adquiere vigencia dentro de Bot-ABAP cuando está incorporada a `main` del repositorio canónico experimental.
+Una regla existente solo en una rama no fusionada se considera candidata y no debe tratarse como vigente.
+
+FUENTE NO ACCESIBLE
+Si la fuente canónica imprescindible para una tarea no puede consultarse de forma fiable, declarar exactamente:
+FUENTE_CANÓNICA_NO_ACCESIBLE
+
+y detener únicamente el alcance dependiente. No reconstruir autoridad desde memoria, conversación previa ni conocimiento general.
+
+INDEPENDENCIA
+El origen metodológico de Bot-ABAP puede basarse en experiencias de otros proyectos, pero esos proyectos no son autoridad de Bot-ABAP. Solo este repositorio y su rama `main` definen el canon experimental vigente.

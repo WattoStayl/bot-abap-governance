@@ -1,27 +1,48 @@
-# Bot-ABAP Governance — Experimento
+# Bot-ABAP Governance
 
-Estado: **EXPERIMENTAL**
+Estado: **EXPERIMENTAL — CANON PÚBLICO DE PRUEBA**  
+Versión: `botabap-gov-v0.1.0`  
+Repositorio: `WattoStayl/bot-abap-governance`  
+Rama canónica: `main`
 
-Este repositorio es una fuente documental independiente creada para probar el agente organizacional **Bot-ABAP** en Microsoft Copilot.
+Bot-ABAP es un agente organizacional para análisis, desarrollo y QA SAP ABAP bajo control humano. Este repositorio define su gobernanza experimental independiente.
 
-## Alcance actual
+## Regla principal
+Solo lo incorporado a `main` es vigente. La conversación, memoria del agente y otros proyectos no sustituyen este canon.
 
-Por ahora contiene únicamente información genérica de prueba. No contiene ni debe contener clientes reales, tickets reales, SIDs, mandantes, órdenes de transporte, código de cliente, evidencia, credenciales, datos productivos ni información confidencial.
+## Restricción pública
+Mientras el repositorio sea público, **NO se almacenan aquí datos operativos reales o confidenciales**: clientes, tickets, SIDs, mandantes, OTs, código de cliente, logs, dumps, capturas, contactos, credenciales o evidencia identificable. Los registros operativos incluidos son plantillas vacías.
 
-## Rama de referencia
+## Recuperación mínima antes de una tarea material
+1. README.md
+2. 000_autoridad_documental.txt
+3. 002_indice_documental_proyecto.txt
+4. 010_identidad_y_mandato_proyecto.txt
+5. 120_reglas_proyecto.txt
+6. 230_estado_operativo_proyecto.txt
+7. 330_buenas_practicas_uso_ia.txt
+8. Documentos de cliente/tarea/rol/pruebas aplicables cuando existan en una fuente autorizada.
 
-- Repositorio: `WattoStayl/bot-abap-governance`
-- Rama: `main`
-- Punto de entrada: `README.md`
+## Índice rápido
+- [000 Autoridad documental](000_autoridad_documental.txt)
+- [002 Índice documental](002_indice_documental_proyecto.txt)
+- [010 Identidad y mandato](010_identidad_y_mandato_proyecto.txt)
+- [020 Parámetros](020_parametros_inicializacion.txt)
+- [120 Reglas](120_reglas_proyecto.txt)
+- [220 Roles](220_roles_agentes.txt)
+- [230 Estado operativo](230_estado_operativo_proyecto.txt)
+- [330 Buenas prácticas IA](330_buenas_practicas_uso_ia.txt)
+- [340 Seguridad](340_seguridad_transportes_evidencia.txt)
+- [350 Versionado](350_convenciones_versionado.txt)
+
+El índice completo está en [002_indice_documental_proyecto.txt](002_indice_documental_proyecto.txt).
 
 ## Prueba de conocimiento
-
-El identificador de prueba de esta fuente es:
-
 `BOT_ABAP_KNOWLEDGE_TEST = CONDOR-742`
 
-Si un agente afirma haber consultado este repositorio, debe poder recuperar exactamente ese identificador desde esta fuente y no inventarlo.
+`BOT_ABAP_CANON_VERSION = botabap-gov-v0.1.0`
 
-## Evolución
+Si un agente afirma haber consultado esta fuente, debe poder recuperar esos valores exactamente.
 
-La gobernanza definitiva de Bot-ABAP se incorporará de forma gradual después de validar que Microsoft Copilot puede consultar correctamente esta fuente pública.
+## Origen metodológico
+Esta gobernanza se inspira en prácticas probadas del proyecto ABAP GBA, pero **no hereda** su autoridad, clientes, tickets, transportes, evidencia ni estados.

@@ -1,0 +1,35 @@
+115 — REGLAS DE TIEMPO PARA BITÁCORA
+
+OBJETIVO
+Ayudar al usuario de sesión a consolidar tramos efectivos de trabajo sin inventar tiempo.
+
+REGLAS
+- La hora es CONFIRMADA cuando el humano la informa expresamente o existe una fuente autorizada inequívoca.
+- No inferir trabajo por tiempo entre mensajes.
+- Mantener máximo un tramo ACTIVO por usuario cuando se gestione bitácora.
+- Cambio de tarea con una hora confirmada puede cerrar el tramo anterior y abrir el nuevo.
+- Solo tramos cerrados participan en el total.
+- Si falta inicio o fin, duración = NO DEFINIDA.
+- Preguntar ¿Qué hora es? solo en fronteras relevantes si no existe hora verificable.
+
+FORMATO
+WORKLOG_ID = <WL-YYYYMMDD-NNN>
+DATE_LOCAL = <YYYY-MM-DD>
+CLIENT_ID = <ID/NO APLICA>
+CLIENT_PROFILE_ID = <ID/NO APLICA>
+CHANGE_ID = <ID/NO APLICA>
+TICKET = <ID/NO APLICA>
+ACTIVITY = <BREVE>
+START_TIME = <HH:MM/NO DEFINIDO>
+END_TIME = <HH:MM/NO DEFINIDO>
+DURATION_MIN = <N/NO DEFINIDO>
+STATUS = ABIERTO | PAUSADO | CERRADO
+TIME_SOURCE = HUMAN_CONFIRMED | AUTHORIZED_SOURCE
+BITACORA_STATUS = PENDIENTE | REGISTRADA
+
+FORMATO RESUMEN
+HH:MM–HH:MM | CLIENTE/Ticket | actividad | X h YY min
+TOTAL DÍA = X h YY min
+
+RESTRICCIÓN
+No persistir bitácoras reales en este repositorio público. Este documento define reglas y plantilla solamente.

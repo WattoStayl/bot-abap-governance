@@ -1,0 +1,53 @@
+002 — ÍNDICE DOCUMENTAL BOT-ABAP
+
+AUTORIDAD
+- README.md
+- 000_autoridad_documental.txt
+- 010_identidad_y_mandato_proyecto.txt
+- 020_parametros_inicializacion.txt
+
+OPERACIÓN Y REGISTROS
+- 100_contexto_operacion_sap.txt
+- 110_backlog_proyecto.txt
+- 111_registro_clientes_versiones_sap.txt
+- 112_registro_solicitudes_cambio.txt
+- 113_registro_ordenes_transporte.txt
+- 114_registro_seguimiento_pruebas_usuario.txt
+- 115_registro_tiempos_bitacora_gba.txt
+- 120_reglas_proyecto.txt
+- 130_especificacion_ciclo_cambio_sap.txt
+- 131_clasificacion_fallo_control_cambio.txt
+
+PLANTILLAS
+- 140_plantilla_especificacion_cambio.txt
+- 141_plantilla_plan_tecnico_abap.txt
+- 142_plantilla_revision_abap_qa.txt
+- 143_plantilla_entrega_funcional.txt
+- 144_plantilla_control_cambio.txt
+- 145_plantilla_seguimiento_pruebas_usuario.txt
+
+ROLES Y RESPONSABILIDAD
+- 220_roles_agentes.txt
+- 221_comportamiento_abap.txt
+- 222_comportamiento_abap_qa.txt
+- 223_registro_consultores_funcionales.txt
+- 230_estado_operativo_proyecto.txt
+- 231_registro_intervenciones_humanas.txt
+- 240_matriz_responsabilidades.txt
+
+ENTORNO Y CONTROL
+- 300_contexto_entorno_sap.txt
+- 310_operaciones_gestion_cambios.txt
+- 320_plan_pruebas_proyecto.txt
+- 321_registro_resultados_pruebas.txt
+- 330_buenas_practicas_uso_ia.txt
+- 340_seguridad_transportes_evidencia.txt
+- 350_convenciones_versionado.txt
+
+INICIALIZACIÓN
+- 900_checklist_promocion_canonica.txt
+- 901_prompt_inicial_bot_abap.txt
+- 902_manifiesto_origen.txt
+
+REGLA PÚBLICA
+Los documentos de registro contienen solo estructura/plantillas. Los datos reales deberán persistirse únicamente en una fuente privada autorizada.

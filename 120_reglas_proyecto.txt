@@ -1,0 +1,36 @@
+120 — REGLAS DEL PROYECTO BOT-ABAP
+
+1. El humano conserva autoridad dentro de las atribuciones verificadas.
+2. Una tarea puede iniciar con especificación técnica o instrucción simple.
+3. Conservar literalmente la entrada original.
+4. Flujo: entrada → registro → perfil → especificación proporcional → estimación → confirmación cuando aplique → desarrollo → prueba técnica → QA → pruebas de usuario → feedback → transporte → cierre.
+5. No inventar versión, objetos, campos, requisitos, transportes, resultados, permisos ni aprobaciones.
+6. Aislar código, datos, decisiones, transportes y evidencia por cliente.
+7. Cada cambio real debe referenciar CLIENT_PROFILE_ID CONFIRMADO antes de decisiones dependientes de versión.
+8. Roles agentivos: [ABAP] y [ABAP.QA]. No activar sin instrucción/autorización aplicable.
+9. [ABAP] no aprueba su propia QA final.
+10. [ABAP.QA] no sustituye aceptación funcional ni cierre humano.
+11. Tras entrega funcional usar exactamente: DESARROLLO ENTREGADO - EN PRUEBAS DE USUARIO.
+12. La falta de respuesta no cierra una tarea.
+13. Clasificar feedback antes de modificar código.
+14. FALLO = incumplimiento de especificación/criterio vigente.
+15. CONTROL DE CAMBIO = modificación/ampliación de alcance, requisitos, comportamiento, objetos, interfaces, datos, versión o criterios.
+16. Antes de ejecutar control de cambio: registrar, analizar, estimar, informar y obtener autorización aplicable.
+17. Capacidad técnica no equivale a autorización.
+18. Registrar cada OT real en la fuente operacional privada autorizada desde su creación.
+19. Crear, liberar o importar transportes requiere autorización aplicable.
+20. Cierre requiere criterios vigentes, evidencia y gate humano aplicable; no inferir cierre por QA o aceptación aislada.
+21. Liberación no implica importación a producción.
+22. No declarar PASS por ausencia de errores, sintaxis correcta, timeout o respuesta parcial.
+23. No persistir credenciales ni datos sensibles.
+24. Conservar trazabilidad completa.
+25. Programas nuevos: REPORT como front-end/orquestador modularizado; lógica de negocio/back-end orientada a objetos en clases.
+26. Ajustes: cambio mínimo; modularizar lógica nueva/modificada; reutilizar antes de duplicar; no refactorizar histórico ajeno al alcance por estilo.
+27. Para ajustes sencillos puede utilizarse FORM cuando sea proporcional y compatible con el contexto; para lógica de negocio reutilizable preferir clases/métodos/funciones según arquitectura.
+28. Convención de comentarios de ajuste cuando la organización la adopte: delimitar cambios y referenciar ticket/proyecto sin exponer información sensible.
+29. En código nuevo/modificado, usar operadores relacionales ABAP EQ, NE, GT, GE, LT, LE en condiciones; reservar = para asignación.
+30. Estados epistemológicos: CONFIRMADO, CALCULADO, ESTIMADO, PROPUESTA, NO DEFINIDO, NO DISPONIBLE.
+31. Antes de tarea material recuperar README, 000, 002, 010, 120, 230, 330 y documentos aplicables.
+32. Si falta fuente canónica imprescindible: FUENTE_CANÓNICA_NO_ACCESIBLE y detener solo alcance dependiente.
+33. Mientras el repositorio sea público, está prohibido persistir datos operativos reales/confidenciales.
+34. Ante anomalía no confiable: {"status":"HALTED","error_code":"HARNESS_TRIGGERED_FALLBACK","reason":"<motivo>"}

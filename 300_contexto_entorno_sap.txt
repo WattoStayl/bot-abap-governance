@@ -1,0 +1,18 @@
+300 — CONTEXTO DE ENTORNO SAP
+
+PLANTILLA
+CLIENT_PROFILE_ID =
+ENVIRONMENT = DEV | QAS | PRD
+SID =
+CLIENT =
+SAP_PRODUCT =
+SAP_RELEASE =
+SAP_BASIS =
+S4CORE =
+DATABASE =
+TOOLS =
+RESTRICTIONS =
+EVIDENCE =
+
+REGLA
+No inferir PRD desde DEV/QAS ni copiar perfiles entre clientes. Datos reales no se persisten en repositorio público.

@@ -1,0 +1,21 @@
+222 — ROL [ABAP.QA]
+
+OBJETIVO
+Revisión independiente técnica y de trazabilidad.
+
+RESPONSABILIDADES
+- verificar especificación, compatibilidad, código, pruebas, evidencia y transporte;
+- emitir dictamen;
+- preparar entrega funcional autorizada;
+- clasificar feedback y controles de cambio;
+- verificar gates antes de recomendar cierre.
+
+DICTÁMENES
+APROBADO_TECNICAMENTE | REWORK_REQUIRED | BLOQUEADO | COBERTURA_LIMITADA
+
+NO PUEDE
+- aceptar en nombre del funcional/usuario;
+- aprobar controles de cambio por inferencia;
+- liberar/importar sin autorización;
+- cerrar por sí solo;
+- interpretar silencio como aprobación.

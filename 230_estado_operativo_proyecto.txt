@@ -13,22 +13,27 @@ PRIVATE_OPERATIONAL_SOURCE = NO DEFINIDA
 AGENT_BUILDER_KNOWLEDGE_STATUS = NO CONFIRMADO / INDEXACIÓN PENDIENTE
 KNOWLEDGE_TEST_EXPECTED = CONDOR-742
 GITHUB_AGENT_EXPERIMENT_STATUS = PAUSADO
-LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = PROPUESTA REGISTRADA / PENDIENTE DE DISEÑO
+LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = DISEÑO VALIDADO / LISTO PARA PRUEBA OPERATIVA
 
 ESTADO
-El experimento de Agent Builder con gobernanza pública en GitHub/GitHub Pages queda PAUSADO por instrucción humana. La publicación permanece disponible y la indexación pública puede continuar, pero no se realizarán nuevas acciones sobre ese experimento hasta decidir retomarlo.
+El experimento de Agent Builder con gobernanza pública en GitHub/GitHub Pages permanece PAUSADO por instrucción humana. La publicación puede permanecer disponible y la indexación pública puede continuar, pero no se realizarán nuevas acciones sobre ese experimento hasta decidir retomarlo.
 
-La gobernanza pública sigue siendo exclusivamente experimental. No está autorizado almacenar operación real aquí.
+La gobernanza pública sigue siendo exclusivamente experimental. No está autorizado almacenar operación real o confidencial aquí.
 
-Se registra como siguiente línea experimental un agente sin dependencia de GitHub para el estado operativo, basado en documentación canónica administrada por el humano:
-- 1 ticket = 1 archivo Markdown canónico;
-- 1 proyecto = 1 archivo Markdown canónico;
-- el humano carga el archivo para iniciar o retomar trabajo;
-- al pausar, cambiar de trabajo o terminar, el agente devuelve el archivo actualizado para custodia humana;
-- análisis cross pueden usar varios archivos, en solo lectura por defecto, y producir informes en el formato solicitado.
+El diseño del experimento de canon local portátil queda VALIDADO y listo para prueba operativa sintética. Su definición vigente está en `116_experimento_canon_local_portable.md` e incluye, entre otros, los siguientes principios:
+- una unidad de trabajo mantiene un único expediente Markdown vigente bajo custodia humana;
+- se admiten ACTIVIDAD, TICKET y PROYECTO, con transición continua de ACTIVIDAD a TICKET cuando corresponda;
+- el expediente utiliza seis secciones superiores: IDENTIDAD, SOLICITUD Y ALCANCE, CONTEXTO, ESTADO ACTUAL, BITÁCORA y EVIDENCIA Y REFERENCIAS;
+- la estructura es estable y el contenido crece según necesidad y riesgo;
+- Checklist Global y Checklist Operativo gobiernan planificación, avance, prioridad, bloqueos y continuidad sin sustituir los gates generales;
+- cada cierre de un punto superior del Checklist Global consolida y entrega automáticamente el `.md` actualizado;
+- DERIVAR consolida y entrega el expediente para continuidad entre humanos;
+- la carga de varios expedientes se interpreta según la instrucción humana y las operaciones transversales son de SOLO LECTURA por defecto;
+- contradicciones o ambigüedades que impidan ejecutar de forma fiable una instrucción requieren aclaración humana;
+- el chat no sustituye el expediente y no se inventan horas, estados, aprobaciones, OTs, pruebas, decisiones ni resultados.
 
 REFERENCIA
 116_experimento_canon_local_portable.md
 
 NEXT_GATE
-Diseñar una plantilla mínima y autocontenida para ticket/proyecto, priorizando simplicidad y baja fricción para consultores funcionales y ABAP. El experimento GitHub puede retomarse posteriormente verificando primero `CONDOR-742`.
+Preparar el prompt/comportamiento del agente experimental y ejecutar una prueba operativa sintética end-to-end con generación, carga, handoff, consolidación y análisis transversal. Evaluar fricción antes de utilizar el modelo con operación real.

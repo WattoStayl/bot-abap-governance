@@ -13,27 +13,56 @@ PRIVATE_OPERATIONAL_SOURCE = NO DEFINIDA
 AGENT_BUILDER_KNOWLEDGE_STATUS = NO CONFIRMADO / INDEXACIÓN PENDIENTE
 KNOWLEDGE_TEST_EXPECTED = CONDOR-742
 GITHUB_AGENT_EXPERIMENT_STATUS = PAUSADO
-LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = DISEÑO VALIDADO / LISTO PARA PRUEBA OPERATIVA
+LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = PRUEBA OPERATIVA SINTÉTICA PREPARADA / REINICIO DESDE CERO
+BOTCONSULTOR_CONFIG_BASE = V8_PRUEBAS
+BOTCONSULTOR_DESCRIPTION_STATUS = SIN CAMBIOS
+BOTCONSULTOR_INSTRUCTIONS_STATUS = V8_PRUEBAS PREPARADA COMO LÍNEA BASE; ACTIVACIÓN EFECTIVA EN AGENT BUILDER DEBE VERIFICARSE EN CHAT NUEVO
+BOTCONSULTOR_TEST_CURRENT_CASE = CU1 PENDIENTE
+BOTCONSULTOR_CORRECTIONS_CURRENT_CASE = VACÍA
 
 ESTADO
 El experimento de Agent Builder con gobernanza pública en GitHub/GitHub Pages permanece PAUSADO por instrucción humana. La publicación puede permanecer disponible y la indexación pública puede continuar, pero no se realizarán nuevas acciones sobre ese experimento hasta decidir retomarlo.
 
 La gobernanza pública sigue siendo exclusivamente experimental. No está autorizado almacenar operación real o confidencial aquí.
 
-El diseño del experimento de canon local portátil queda VALIDADO y listo para prueba operativa sintética. Su definición vigente está en `116_experimento_canon_local_portable.md` e incluye, entre otros, los siguientes principios:
-- una unidad de trabajo mantiene un único expediente Markdown vigente bajo custodia humana;
-- se admiten ACTIVIDAD, TICKET y PROYECTO, con transición continua de ACTIVIDAD a TICKET cuando corresponda;
-- el expediente utiliza seis secciones superiores: IDENTIDAD, SOLICITUD Y ALCANCE, CONTEXTO, ESTADO ACTUAL, BITÁCORA y EVIDENCIA Y REFERENCIAS;
-- la estructura es estable y el contenido crece según necesidad y riesgo;
-- Checklist Global y Checklist Operativo gobiernan planificación, avance, prioridad, bloqueos y continuidad sin sustituir los gates generales;
-- cada cierre de un punto superior del Checklist Global consolida y entrega automáticamente el `.md` actualizado;
-- DERIVAR consolida y entrega el expediente para continuidad entre humanos;
-- la carga de varios expedientes se interpreta según la instrucción humana y las operaciones transversales son de SOLO LECTURA por defecto;
-- contradicciones o ambigüedades que impidan ejecutar de forma fiable una instrucción requieren aclaración humana;
-- el chat no sustituye el expediente y no se inventan horas, estados, aprobaciones, OTs, pruebas, decisiones ni resultados.
+El diseño del experimento de canon local portátil queda VALIDADO y entra en una campaña de prueba operativa sintética desde cero. Su definición vigente está en `116_experimento_canon_local_portable.md`.
+
+La configuración de referencia para la campaña es BotConsultor v8 de pruebas, derivada de la v7 simplificada. La Description breve se mantiene sin cambios. La v8 incorpora como controles explícitos los hallazgos de preprueba ya observados:
+- una solución definida, aceptada o recomendada no equivale a ejecución realizada;
+- DISEÑO no sustituye DESARROLLO/EJECUCIÓN en el Checklist Global; debe existir ejecución aplicable o justificación de NO APLICA;
+- `LISTO PARA VALIDACIÓN` significa que el Checklist Global puede certificarse directamente mediante `CHECKLIST: CERTIFICADO`, sin gates adicionales;
+- el porcentaje Global se calcula exclusivamente desde los puntos superiores del Checklist Global certificado; el Checklist Operativo no redefine su denominador;
+- el cierre de un punto Global y el 100 % deben consolidar y entregar automáticamente el `.md`; si la plataforma no permite adjuntarlo, el agente debe declararlo y usar Markdown como alternativa sin afirmar que creó un archivo.
+
+PROTOCOLO DE CAMPAÑA
+La prueba se ejecutará secuencialmente, un caso de uso a la vez y preferentemente en chats nuevos para evitar contaminación de contexto entre configuraciones o casos.
+
+Para cada caso CUx:
+1. la lista de correcciones comienza vacía;
+2. el evaluador entrega un único prompt de prueba al humano;
+3. el humano lo transmite a BotConsultor y devuelve la respuesta observada;
+4. el evaluador compara respuesta observada contra comportamiento esperado;
+5. si existe desviación, se registra una corrección `CUx-Cnn` con magnitud/impacto, causa probable y propuesta de corrección en un párrafo;
+6. las correcciones se acumulan sin perder las anteriores durante todo el caso;
+7. si una respuesta cumple lo esperado, se muestra únicamente la lista acumulada y se entrega el siguiente prompt;
+8. al terminar el caso, el humano guarda la lista; luego se limpia antes de iniciar el siguiente caso.
+
+CASOS DE USO PRIORIZADOS
+CU1 — Actividad simple end-to-end y entrega automática del `.md`.
+CU2 — Retomar en chat nuevo únicamente desde el `.md`.
+CU3 — Pausa/handoff entre personas mediante DERIVAR.
+CU4 — Transición ACTIVIDAD a TICKET sin reiniciar trabajo ni avance.
+CU5 — Contexto insuficiente y control de inferencias/preguntas mínimas.
+CU6 — Replanificación durante ejecución y cálculo jerárquico de avance.
+CU7 — Feedback/cambio de alcance durante trabajo.
+CU8 — Evidencia y artefactos externos.
+CU9 — Varios expedientes y análisis transversal en solo lectura.
+CU10 — Límites de autoridad y efectos externos.
 
 REFERENCIA
 116_experimento_canon_local_portable.md
+320_plan_pruebas_proyecto.txt
+321_registro_resultados_pruebas.txt
 
 NEXT_GATE
-Preparar el prompt/comportamiento del agente experimental y ejecutar una prueba operativa sintética end-to-end con generación, carga, handoff, consolidación y análisis transversal. Evaluar fricción antes de utilizar el modelo con operación real.
+Abrir un chat nuevo de evaluación, verificar `main` fresco, tomar BotConsultor v8 de pruebas como línea base y comenzar CU1 desde cero con `Correcciones acumuladas CU1: ninguna`. Ejecutar el protocolo secuencial prompt → respuesta observada → evaluación → corrección acumulativa hasta completar CU1. No promover a operación real antes de completar la campaña sintética y evaluar la fricción.

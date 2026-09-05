@@ -10,8 +10,10 @@ Bot-ABAP es un agente organizacional para análisis, desarrollo y QA SAP ABAP ba
 ## Regla principal
 Solo lo incorporado a `main` es vigente. La conversación, memoria del agente y otros proyectos no sustituyen este canon.
 
+Los artefactos almacenados bajo `evidencia_sintetica/` son evidencia/configuraciones de prueba y no son reglas canónicas salvo promoción normativa expresa en otro documento vigente.
+
 ## Restricción pública
-Mientras el repositorio sea público, **NO se almacenan aquí datos operativos reales o confidenciales**: clientes, tickets, SIDs, mandantes, OTs, código de cliente, logs, dumps, capturas, contactos, credenciales o evidencia identificable. Los registros operativos incluidos son plantillas vacías.
+Mientras el repositorio sea público, **NO se almacenan aquí datos operativos reales o confidenciales**: clientes, tickets, SIDs, mandantes, OTs, código de cliente, logs, dumps, capturas, contactos, credenciales o evidencia identificable. Los registros operativos incluidos son plantillas vacías o evidencia sintética explícitamente identificada.
 
 ## Recuperación mínima antes de una tarea material
 1. README.md
@@ -28,6 +30,8 @@ Mientras el repositorio sea público, **NO se almacenan aquí datos operativos r
 - [002 Índice documental](002_indice_documental_proyecto.txt)
 - [010 Identidad y mandato](010_identidad_y_mandato_proyecto.txt)
 - [020 Parámetros](020_parametros_inicializacion.txt)
+- [116 Canon local portátil](116_experimento_canon_local_portable.md)
+- [117 Contrato de presentación BotConsultor](117_contrato_presentacion_botconsultor.md)
 - [120 Reglas](120_reglas_proyecto.txt)
 - [220 Roles](220_roles_agentes.txt)
 - [230 Estado operativo](230_estado_operativo_proyecto.txt)

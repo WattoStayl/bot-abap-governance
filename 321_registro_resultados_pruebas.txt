@@ -15,4 +15,44 @@ LIMITATIONS =
 EXECUTED_BY =
 EXECUTED_AT =
 
-REGISTRO REAL = VACÍO POR RESTRICCIÓN PÚBLICA.
+REGLA PÚBLICA
+Solo se registran resultados sintéticos o desidentificados. No incluir enlaces privados, nombres de clientes/contactos reales ni evidencia operacional identificable.
+
+REGISTRO SINTÉTICO
+TEST_ID = T-BOTCONSULTOR-V9-CRL1-CU3
+CHANGE_ID = BOTCONSULTOR-V9-CRL1
+ENVIRONMENT = Microsoft Copilot / chat nuevo y handoff mediante expediente Markdown sintético
+PRECONDITIONS = Description V9 candidata + Instructions V9 CRL1; caso ACME-DEMO/FI; sin datos reales
+INPUT = Flujo CU3: crear actividad → iniciar → certificar Global → análisis → DERIVAR → retomar en chat nuevo por receptor → diseño → 100 % → intento de cierre definitivo
+EXPECTED = Preservar árbol certificado, porcentaje, evidencia, tiempos por humano y límites de cierre; entregar .md en eventos obligatorios; no reconstruir el plan ni confundir diseño con ejecución
+ACTUAL = Handoff preservó árbol y Global 33 %; receptor retomó sin heredar horas; avance 33→67→100; diseño no se confundió con implementación; 100 % no produjo cierre formal. Persistencia automática y varios detalles de tiempo/árbol/foco presentaron desviaciones. Presentación extensa/visual quedó separada en contrato P1.
+RESULT = FAIL
+EVIDENCE = Evaluación sintética V9-CU3 con 13 correcciones; 7 ALTA, 6 MEDIA, 0 CRÍTICA. Referencias: evidencia_sintetica/BotConsultor_V9_SOURCE_ES_INDEX.md; evidencia_sintetica/BotConsultor_V9_instructions_CRL1.txt; 117_contrato_presentacion_botconsultor.md
+LIMITATIONS = No se validó toda la campaña V9; CU3 es stress test inicial. La capacidad de generar .md real fue confirmada solo cuando se solicitó explícitamente; no se probaron efectos externos reales.
+EXECUTED_BY = HUMANO_EVALUADOR + BOTCONSULTOR
+EXECUTED_AT = 2026-09-04
+
+CORRECCIONES V9-CU3
+V9-CU3-C01 = MEDIA | Encabezado operativo cliente/tipo/Global no respetado. Cubierta para versiones futuras por P1.
+V9-CU3-C02 = ALTA | BASE no entregó .md real automáticamente; capacidad existe cuando se solicita explícitamente.
+V9-CU3-C03 = MEDIA | BITÁCORA incluyó pendientes/inferencias en vez de limitarse a eventos materiales.
+V9-CU3-C04 = MEDIA | Checklist visual/emojis no respetados. Cubierta para versiones futuras por P1.
+V9-CU3-C05 = ALTA | Hora de inicio confirmada del emisor no quedó persistida.
+V9-CU3-C06 = ALTA | Global propuesto omitió cubrir o justificar explícitamente dominios semánticos aplicables/no aplicables.
+V9-CU3-C07 = MEDIA | Revisión/consolidación documental prematura al presentar/certificar plan sin evento de consolidación aplicable.
+V9-CU3-C08 = ALTA | Entrada a ejecución sin Checklist Operativo real; solo se indicó TL actual.
+V9-CU3-C09 = ALTA | Se cerró un hijo no demostrado para completar TL1.
+V9-CU3-C10 = MEDIA | TL_CLOSE no completó evento de persistencia: faltó .md automático y pregunta de correo.
+V9-CU3-C11 = ALTA | DERIVAR no persistió tramo horario cerrado del emisor aunque inicio y fin estaban confirmados.
+V9-CU3-C12 = MEDIA | Al cerrar TL2 se activó TL3 automáticamente sin decisión inequívoca del humano.
+V9-CU3-C13 = ALTA | G100 no completó evento automático: faltó .md actualizado y pregunta de correo.
+
+COMPARACIÓN CON V8
+CU3 V8 = 24 correcciones, incluyendo 1 CRÍTICA.
+CU3 V9 CRL1 = 13 correcciones, 0 CRÍTICAS.
+REDUCCIÓN = 11 correcciones = 45,8 %.
+HALLAZGO PRINCIPAL = No se reprodujo el fallo crítico de pérdida/reconstrucción del Checklist Global durante handoff.
+
+DECISIÓN POST-CU3
+Las desviaciones de formato C01/C04 permanecen como evidencia, pero el formato se gobierna transversalmente por P1 y no será el foco principal del motor lógico CRL2.
+FOCOS CRL2 = persistencia automática; tiempo del emisor en handoff; integridad/cobertura del Global; control humano del foco operativo.

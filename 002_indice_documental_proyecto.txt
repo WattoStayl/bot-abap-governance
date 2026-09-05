@@ -15,6 +15,7 @@ OPERACIÓN Y REGISTROS
 - 114_registro_seguimiento_pruebas_usuario.txt
 - 115_registro_tiempos_bitacora_gba.txt
 - 116_experimento_canon_local_portable.md
+- 117_contrato_presentacion_botconsultor.md
 - 120_reglas_proyecto.txt
 - 130_especificacion_ciclo_cambio_sap.txt
 - 131_clasificacion_fallo_control_cambio.txt
@@ -45,10 +46,17 @@ ENTORNO Y CONTROL
 - 340_seguridad_transportes_evidencia.txt
 - 350_convenciones_versionado.txt
 
+ARTEFACTOS DE PRUEBA NO NORMATIVOS
+- evidencia_sintetica/BotConsultor_V9_SOURCE_ES_INDEX.md
+- evidencia_sintetica/BotConsultor_V9_description_candidate.txt
+- evidencia_sintetica/BotConsultor_V9_instructions_CRL1.txt
+
 INICIALIZACIÓN
 - 900_checklist_promocion_canonica.txt
 - 901_prompt_inicial_bot_abap.txt
 - 902_manifiesto_origen.txt
 
 REGLA PÚBLICA
-Los documentos de registro contienen solo estructura/plantillas. Los datos reales deberán persistirse únicamente en una fuente privada autorizada.
+Los documentos de registro contienen solo estructura/plantillas y evidencia sintética explícitamente identificada. Los datos reales deberán persistirse únicamente en una fuente privada autorizada.
+
+Los archivos bajo `evidencia_sintetica/` son artefactos de prueba y no constituyen reglas canónicas por sí mismos. Su presencia en `main` no promueve propuestas marcadas como NO VIGENTE.

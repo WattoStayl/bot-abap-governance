@@ -13,56 +13,49 @@ PRIVATE_OPERATIONAL_SOURCE = NO DEFINIDA
 AGENT_BUILDER_KNOWLEDGE_STATUS = NO CONFIRMADO / INDEXACIÓN PENDIENTE
 KNOWLEDGE_TEST_EXPECTED = CONDOR-742
 GITHUB_AGENT_EXPERIMENT_STATUS = PAUSADO
-LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = PRUEBA OPERATIVA SINTÉTICA PREPARADA / REINICIO DESDE CERO
+LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = DISEÑO VALIDADO / CAMPAÑA SINTÉTICA EN ITERACIÓN
 BOTCONSULTOR_CONFIG_BASE = V8_PRUEBAS
-BOTCONSULTOR_DESCRIPTION_STATUS = SIN CAMBIOS
-BOTCONSULTOR_INSTRUCTIONS_STATUS = V8_PRUEBAS PREPARADA COMO LÍNEA BASE; ACTIVACIÓN EFECTIVA EN AGENT BUILDER DEBE VERIFICARSE EN CHAT NUEVO
-BOTCONSULTOR_TEST_CURRENT_CASE = CU1 PENDIENTE
-BOTCONSULTOR_CORRECTIONS_CURRENT_CASE = VACÍA
+BOTCONSULTOR_CONFIG_CANDIDATE = V9_CRL1
+BOTCONSULTOR_V9_SOURCE_STATUS = PROPUESTA / NO VIGENTE / PERSISTIDA COMO EVIDENCIA SINTÉTICA
+BOTCONSULTOR_V9_CRL1_STATUS = PROBADA EN CU3 / NO PROMOVIDA A CONFIGURACIÓN BASE
+BOTCONSULTOR_PRESENTATION_CONTRACT = P1 VIGENTE
+BOTCONSULTOR_TEST_CURRENT_CASE = V9-CU3 FINALIZADO
+BOTCONSULTOR_V9_CU3_CORRECTIONS = 13 TOTAL / 7 ALTA / 6 MEDIA / 0 CRÍTICA
+BOTCONSULTOR_V8_CU3_REFERENCE = 24 TOTAL / INCLUÍA 1 CRÍTICA
+BOTCONSULTOR_V9_CU3_REDUCTION = 11 CORRECCIONES / 45,8 %
 
 ESTADO
-El experimento de Agent Builder con gobernanza pública en GitHub/GitHub Pages permanece PAUSADO por instrucción humana. La publicación puede permanecer disponible y la indexación pública puede continuar, pero no se realizarán nuevas acciones sobre ese experimento hasta decidir retomarlo.
+El experimento de Agent Builder con gobernanza pública en GitHub/GitHub Pages permanece PAUSADO. La gobernanza pública sigue siendo exclusivamente experimental y no está autorizado almacenar operación real o confidencial.
 
-La gobernanza pública sigue siendo exclusivamente experimental. No está autorizado almacenar operación real o confidencial aquí.
+El canon local portátil permanece validado. BotConsultor V8 continúa como línea base canónica de referencia mientras V9 permanece candidata de prueba; la prueba V9 CRL1 no constituye por sí sola promoción de configuración.
 
-El diseño del experimento de canon local portátil queda VALIDADO y entra en una campaña de prueba operativa sintética desde cero. Su definición vigente está en `116_experimento_canon_local_portable.md`.
+V9 SOURCE ES y V9 CRL1 quedaron persistidas bajo `evidencia_sintetica/` como artefactos NO NORMATIVOS. Las propuestas CORE/AUX/OUT, TICKET→PROYECTO y FB@BOT siguen requiriendo promoción normativa específica antes de considerarse vigentes.
 
-La configuración de referencia para la campaña es BotConsultor v8 de pruebas, derivada de la v7 simplificada. La Description breve se mantiene sin cambios. La v8 incorpora como controles explícitos los hallazgos de preprueba ya observados:
-- una solución definida, aceptada o recomendada no equivale a ejecución realizada;
-- DISEÑO no sustituye DESARROLLO/EJECUCIÓN en el Checklist Global; debe existir ejecución aplicable o justificación de NO APLICA;
-- `LISTO PARA VALIDACIÓN` significa que el Checklist Global puede certificarse directamente mediante `CHECKLIST: CERTIFICADO`, sin gates adicionales;
-- el porcentaje Global se calcula exclusivamente desde los puntos superiores del Checklist Global certificado; el Checklist Operativo no redefine su denominador;
-- el cierre de un punto Global y el 100 % deben consolidar y entregar automáticamente el `.md`; si la plataforma no permite adjuntarlo, el agente debe declararlo y usar Markdown como alternativa sin afirmar que creó un archivo.
+PRESENTACIÓN P1
+Se incorpora `117_contrato_presentacion_botconsultor.md` como regla transversal vigente para todas las versiones futuras de BotConsultor. Objetivo: respuestas escuetas, checklist vertical, indicadores visuales y mínimo scroll. El detalle durable debe residir en el `.md`, no repetirse rutinariamente en el chat.
 
-PROTOCOLO DE CAMPAÑA
-La prueba se ejecutará secuencialmente, un caso de uso a la vez y preferentemente en chats nuevos para evitar contaminación de contexto entre configuraciones o casos.
+RESULTADO V9-CRL1 / CU3
+Se ejecutó un stress test sintético del flujo de handoff que en V8 había producido 24 correcciones y una desviación crítica.
 
-Para cada caso CUx:
-1. la lista de correcciones comienza vacía;
-2. el evaluador entrega un único prompt de prueba al humano;
-3. el humano lo transmite a BotConsultor y devuelve la respuesta observada;
-4. el evaluador compara respuesta observada contra comportamiento esperado;
-5. si existe desviación, se registra una corrección `CUx-Cnn` con magnitud/impacto, causa probable y propuesta de corrección en un párrafo;
-6. las correcciones se acumulan sin perder las anteriores durante todo el caso;
-7. si una respuesta cumple lo esperado, se muestra únicamente la lista acumulada y se entrega el siguiente prompt;
-8. al terminar el caso, el humano guarda la lista; luego se limpia antes de iniciar el siguiente caso.
+V9 CRL1 produjo 13 correcciones: 7 ALTA, 6 MEDIA y 0 CRÍTICA. Reducción frente a V8: 11 correcciones, equivalente a 45,8 %.
 
-CASOS DE USO PRIORIZADOS
-CU1 — Actividad simple end-to-end y entrega automática del `.md`.
-CU2 — Retomar en chat nuevo únicamente desde el `.md`.
-CU3 — Pausa/handoff entre personas mediante DERIVAR.
-CU4 — Transición ACTIVIDAD a TICKET sin reiniciar trabajo ni avance.
-CU5 — Contexto insuficiente y control de inferencias/preguntas mínimas.
-CU6 — Replanificación durante ejecución y cálculo jerárquico de avance.
-CU7 — Feedback/cambio de alcance durante trabajo.
-CU8 — Evidencia y artefactos externos.
-CU9 — Varios expedientes y análisis transversal en solo lectura.
-CU10 — Límites de autoridad y efectos externos.
+El hallazgo principal es positivo: no se reprodujo la pérdida crítica del Checklist Global certificado durante handoff. El árbol, el Global 33 %, los pendientes y la evidencia sobrevivieron a la derivación y a la carga en chat nuevo; el receptor no heredó automáticamente horas del emisor; el avance posterior 33→67→100 se mantuvo coherente; diseño no se trató como implementación; y Global 100 % no se confundió con cierre formal.
 
-REFERENCIA
+PENDIENTES CRL2
+1. Persistencia automática obligatoria de `.md` y pregunta de correo en BASE/TL_CLOSE/DERIVAR/G100 según evento.
+2. Motor horario: persistir correctamente el tramo del emisor en handoff.
+3. Integridad del Global: cobertura/justificación semántica y prohibición de cerrar hijos no demostrados.
+4. Control humano del foco: no marcar automáticamente el siguiente TL EN CURSO.
+
+Las desviaciones puramente visuales detectadas en CU3 permanecen registradas como evidencia, pero quedan gobernadas por P1 y no son el foco principal de CRL2.
+
+REFERENCIAS
 116_experimento_canon_local_portable.md
-320_plan_pruebas_proyecto.txt
+117_contrato_presentacion_botconsultor.md
 321_registro_resultados_pruebas.txt
+evidencia_sintetica/BotConsultor_V9_SOURCE_ES_INDEX.md
+evidencia_sintetica/BotConsultor_V9_description_candidate.txt
+evidencia_sintetica/BotConsultor_V9_instructions_CRL1.txt
 
 NEXT_GATE
-Abrir un chat nuevo de evaluación, verificar `main` fresco, tomar BotConsultor v8 de pruebas como línea base y comenzar CU1 desde cero con `Correcciones acumuladas CU1: ninguna`. Ejecutar el protocolo secuencial prompt → respuesta observada → evaluación → corrección acumulativa hasta completar CU1. No promover a operación real antes de completar la campaña sintética y evaluar la fricción.
+PAUSADO HASTA REANUDACIÓN HUMANA. Al retomar: construir V9 CRL2 conservando los comportamientos que pasaron CU3, aplicar P1 como contrato fijo de presentación y concentrar cambios lógicos en los cuatro pendientes registrados. Después ejecutar smoke test CU3 antes de ampliar a otros casos.

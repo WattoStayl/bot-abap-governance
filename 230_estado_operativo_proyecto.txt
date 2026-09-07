@@ -17,6 +17,7 @@ LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = DISEÑO VALIDADO / CAMPAÑA SINTÉTICA 
 BOTCONSULTOR_CONFIG_BASE = V8_PRUEBAS
 BOTCONSULTOR_CONFIG_CANDIDATE = V9_CRL2
 BOTCONSULTOR_INSTRUCTIONS_MAX_CHARACTERS = 8000
+BOTCONSULTOR_DESCRIPTION_MAX_CHARACTERS = NO DEFINIDO EN CANON
 BOTCONSULTOR_V9_DESCRIPTION_CANDIDATE_CHARACTERS = 526
 BOTCONSULTOR_V9_CRL2_INSTRUCTIONS_CHARACTERS = 7425
 BOTCONSULTOR_V9_CRL2_INSTRUCTIONS_RESERVE = 575
@@ -45,7 +46,9 @@ CRL2 fue medida antes de persistir:
 - reserva = 575 caracteres;
 - resultado = CUMPLE.
 
-Una futura variante que exceda 8000 caracteres no puede declararse lista para prueba: debe compactarse sin pérdida de invariantes, gates ni comportamiento requerido.
+La Description V9 candidata mide 526 caracteres. El canon actual NO DEFINE un máximo de caracteres para Description; no debe inventarse uno. Si la plataforma impone un límite adicional, debe confirmarse y persistirse antes de tratarlo como requisito canónico.
+
+Una futura variante de Instructions que exceda 8000 caracteres no puede declararse lista para prueba: debe compactarse sin pérdida de invariantes, gates ni comportamiento requerido.
 
 PRESENTACIÓN P1
 `117_contrato_presentacion_botconsultor.md` continúa VIGENTE para todas las versiones futuras de BotConsultor. Objetivo: respuestas escuetas, checklist vertical, indicadores visuales y mínimo scroll. El detalle durable debe residir en el `.md`, no repetirse rutinariamente en el chat.

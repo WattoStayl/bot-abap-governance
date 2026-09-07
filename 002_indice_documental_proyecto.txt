@@ -54,6 +54,8 @@ ARTEFACTOS DE PRUEBA NO NORMATIVOS
 - evidencia_sintetica/BotConsultor_V9_CRL2_resume.md
 - evidencia_sintetica/BotConsultor_V9_instructions_CRL3_candidate.txt
 - evidencia_sintetica/BotConsultor_V9_CRL3_resume.md
+- evidencia_sintetica/BotConsultor_V9_instructions_CRL4_candidate.txt
+- evidencia_sintetica/BotConsultor_V9_CRL4_resume.md
 
 INICIALIZACIÓN
 - 900_checklist_promocion_canonica.txt

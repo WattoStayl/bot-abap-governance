@@ -26,27 +26,33 @@ BOTCONSULTOR_V9_SOURCE_STATUS = PROPUESTA / NO VIGENTE / PERSISTIDA COMO EVIDENC
 BOTCONSULTOR_V9_CRL1_STATUS = PROBADA EN CU3 / NO PROMOVIDA
 BOTCONSULTOR_V9_CRL2_STATUS = PROBADA EN CU3 / 11 CORRECCIONES / NO PROMOVIDA
 BOTCONSULTOR_V9_CRL3_STATUS = PROBADA EN CU3 / 11 CORRECCIONES / NO PROMOVIDA
-BOTCONSULTOR_V9_CRL4_STATUS = CANDIDATA CONSTRUIDA / GATE 8000 CUMPLIDO / PERSISTIDA / NO PROBADA
+BOTCONSULTOR_V9_CRL4_STATUS = PROBADA EN CU3 Y CU7 / NO PROMOVIDA / DECISIÓN POST-CU7 PENDIENTE
 BOTCONSULTOR_PRESENTATION_CONTRACT = P1-STRICT VIGENTE
-BOTCONSULTOR_TEST_CURRENT_CASE = V9-CRL4-CU3 PENDIENTE
+BOTCONSULTOR_TEST_CURRENT_CASE = NINGUNO / V9-CRL4-CU3 Y V9-CRL4-CU7 COMPLETADOS
 BOTCONSULTOR_TEST_SEQUENCE = CU3 -> CU7 -> DECISIÓN(CRL5 | CU12-CU15)
-BOTCONSULTOR_POST_CU7_GATE = PENDIENTE DECISIÓN HUMANA
+BOTCONSULTOR_POST_CU7_GATE = PENDIENTE DECISIÓN HUMANA (CRL5 | CU12-CU15)
 BOTCONSULTOR_V8_CU3_REFERENCE = 24 TOTAL / 1 CRÍTICA
 BOTCONSULTOR_V8_CU7_REFERENCE = 21 TOTAL
 BOTCONSULTOR_V9_CU3_CRL1 = 13 TOTAL / 7 ALTA / 6 MEDIA / 0 CRÍTICA
 BOTCONSULTOR_V9_CU3_CRL2 = 11 TOTAL / 6 ALTA / 5 MEDIA / 0 CRÍTICA
 BOTCONSULTOR_V9_CU3_CRL3 = 11 TOTAL / 5 ALTA / 5 MEDIA / 1 BAJA / 0 CRÍTICA
+BOTCONSULTOR_V9_CU3_CRL4 = 8 TOTAL / 4 ALTA / 4 MEDIA / 0 BAJA / 0 CRÍTICA
+BOTCONSULTOR_V9_CU7_CRL4 = 7 TOTAL / 6 ALTA / 1 MEDIA / 0 BAJA / 0 CRÍTICA
+BOTCONSULTOR_CRL4_CU3_REDUCTION_VS_V8 = 66.7%
+BOTCONSULTOR_CRL4_CU3_REDUCTION_VS_CRL3 = 27.3%
+BOTCONSULTOR_CRL4_CU7_REDUCTION_VS_V8 = 66.7%
+BOTCONSULTOR_NEXT_DECISION = ANALIZAR CRL4 CU3+CU7 Y DECIDIR CRL5 O CU12-CU15
 
 ESTADO
 El experimento público permanece exclusivamente experimental. No está autorizado almacenar operación real o confidencial.
 
-BotConsultor V8 continúa como línea base de referencia. CRL1, CRL2 y CRL3 son candidatas históricas probadas. CRL4 pasa a ser la candidata actual de prueba. Ninguna V9 está promovida como configuración base.
+BotConsultor V8 continúa como línea base de referencia. CRL1, CRL2 y CRL3 son candidatas históricas probadas. CRL4 es la candidata actual evaluada en los stress tests CU3 y CU7. Ninguna V9 está promovida como configuración base.
 
 V9 SOURCE ES, Description y variantes CRL están bajo `evidencia_sintetica/` como artefactos NO NORMATIVOS. CORE/AUX/OUT, TICKET→PROYECTO y FB@BOT siguen requiriendo promoción normativa específica.
 
 GATE DE TAMAÑO
 `020_parametros_inicializacion.txt` exige Instructions <= 8000 caracteres antes de entregar/probar.
-CRL4 fue medida antes de persistir:
+CRL4 fue medida antes de persistir y probar:
 - Instructions = 7810;
 - máximo = 8000;
 - reserva = 190;
@@ -55,44 +61,63 @@ CRL4 fue medida antes de persistir:
 PRESENTACIÓN P1-STRICT
 `117_contrato_presentacion_botconsultor.md` continúa VIGENTE y transversal. Prioridad: checklist Markdown vertical, un ítem por línea física con `- <emoji> <actividad>`, máximo cinco ítems, una sola siguiente acción y FORMAT_CHECK antes de enviar. El detalle durable reside en el `.md`.
 
-RESULTADO V9 CRL3 / CU3
-CRL3 produjo 11 correcciones: 5 ALTA, 5 MEDIA, 1 BAJA, 0 CRÍTICA. El total no mejoró respecto de CRL2, pero P1-STRICT mejoró cualitativamente la consistencia visual.
+RESULTADO V9 CRL4 / CU3
+CU3 finalizó con 8 correcciones: 4 ALTA, 4 MEDIA, 0 BAJA, 0 CRÍTICA.
+Comparación: V8=24; CRL1=13; CRL2=11; CRL3=11; CRL4=8.
+Reducción CRL4 vs V8 = 66.7%. Reducción CRL4 vs CRL3 = 27.3%.
 
-Mejoras confirmadas de CRL3:
-- checklist vertical consistente durante la mayor parte del flujo;
-- BASE automático y nombre físico estable mejoraron;
-- Global justificó NO APLICA para ejecución/pruebas fuera del alcance;
-- handoff preservó Global y tramo del emisor;
-- receptor no heredó horas;
-- transferencia quedó pendiente hasta recepción confirmada;
-- foco siguió bajo control humano.
+Fortalezas observadas CU3:
+- BASE automático y PREP con Global NO CALCULABLE funcionaron;
+- START desde PREP pasó a PLAN antes de ejecución;
+- CERT no inició foco automáticamente;
+- handoff cerró y preservó el tramo del emisor;
+- receptor no heredó horas y la recepción se reconstruyó sin iniciar trabajo;
+- G100 cerró correctamente el tramo cuando existía hora final confirmada;
+- P1 se mantuvo mayormente breve y vertical.
 
-Pendientes observados en CRL3:
-1. Global 0 % antes de certificar en vez de NO CALCULABLE;
-2. metadatos documentales incluidos como ítems del checklist;
-3. START entró inicialmente en ejecución antes de construir/certificar G;
-4. datos descubribles tratados como bloqueantes;
-5. PLAN/START generaron archivo o revisión sin evento aplicable;
-6. TL_CLOSE no completó siempre FILE + MAIL?;
-7. G100 no completó MAIL?;
-8. G100 dejó activo el tramo de Daniela pese a hora final confirmada.
+Correcciones CU3 concentradas en:
+1. cobertura/hierarquía del Checklist Global y trazabilidad del porcentaje;
+2. ambigüedad de TL_CLOSE y evento documental;
+3. wording del handoff antes de recepción confirmada;
+4. LOAD mostrando PREP en vez de estado reconstruido;
+5. P1 omitido en consulta puntual de horas;
+6. foco activado sin leaf inequívoco;
+7. modificación silenciosa del Global certificado.
 
-OBJETIVOS V9 CRL4
-1. Máquina de estados cerrada S0 PREP → S1 PLAN → S2 EXEC; START desde PREP solo entra a PLAN.
-2. Global NO CALCULABLE obligatorio antes de CHECKLIST: CERTIFICADO.
-3. Matriz cerrada de auto-write: solo BASE, TL_CLOSE, DERIVAR, G100 y USER_E; START/PLAN/CERT/LOAD no generan revisión/archivo.
-4. Checklist visible contiene solo estados reales de trabajo; metadatos documentales quedan fuera del checklist.
-5. TL_CLOSE y G100 completan FILE + MAIL? antes de responder; si TL_CLOSE causa G100 se ejecuta una cadena combinada.
-6. G100 usa la hora confirmada en el mismo turno para cerrar el tramo activo antes de CONS.
-7. Preservar P1-STRICT, handoff, tiempos, NO APLICA y control humano del foco ya mejorados.
+RESULTADO V9 CRL4 / CU7
+CU7 finalizó con 7 correcciones: 6 ALTA, 1 MEDIA, 0 BAJA, 0 CRÍTICA.
+Comparación: V8/CU7=21; CRL4/CU7=7.
+Reducción CRL4 vs V8 = 66.7%.
 
-SECUENCIA DE VALIDACIÓN CRL4
-1. Ejecutar primero CU3 completo con correcciones desde cero para comparar contra V8=24, CRL1=13, CRL2=11 y CRL3=11.
-2. A continuación ejecutar CU7 completo. Referencia histórica V8/CU7 = 21 correcciones. Este caso será el stress test de cambio de alcance, FALLO vs CONTROL DE CAMBIO, autorización y replanificación.
-3. Con los resultados de CU3 y CU7, el humano decidirá expresamente entre:
-   - construir/probar CRL5 si aún se justifican ajustes del motor;
-   - mantener CRL4 y avanzar a CU12, CU13, CU14 y CU15.
-4. La decisión CRL5 vs CU12–CU15 queda PENDIENTE; no debe inferirse anticipadamente.
+Fortalezas observadas CU7:
+- CONTROL DE CAMBIO fue clasificado antes de ejecutar o ampliar alcance;
+- Global y alcance original permanecieron vigentes mientras el cambio no estaba aprobado;
+- impacto y estimación pudieron registrarse sin autorización de ejecución;
+- tras autorización, el flujo volvió a PLAN y exigió nueva certificación;
+- feedback posterior fue clasificado correctamente como FALLO y no como nuevo CONTROL DE CAMBIO;
+- el FALLO reabrió trabajo dentro del alcance vigente sin pedir autorización de cambio;
+- diseño se mantuvo separado de implementación en los turnos explícitos;
+- G100 entregó .md, ejecutó MAIL?, cerró el tramo 09:00→11:15 y no produjo cierre formal falso;
+- ante intento de cierre definitivo reconoció que Segmento no estaba implementado ni probado.
+
+Correcciones CU7 concentradas en:
+1. Global inicial/replanificado sin cobertura explícita de ANÁLISIS, DISEÑO, EJECUCIÓN/DESARROLLO, PRUEBAS e HITOS DE CIERRE;
+2. repetidas omisiones de la cadena TL_CLOSE → CONS/FILE + MAIL?;
+3. CONTROL DE CAMBIO pendiente presentado como nodo de trabajo del checklist;
+4. replanificación que marcó una corrección como COMPLETADA cuando solo análisis/diseño estaban demostrados.
+
+HALLAZGO TRANSVERSAL CRL4
+La mejora principal es operacional: los dos stress tests redujeron aproximadamente dos tercios de las correcciones históricas de V8 y no reprodujeron fallos críticos. Los defectos restantes están más concentrados y son candidatos claros para una iteración CRL5, especialmente construcción semántica del Global y ejecución determinista de TL_CLOSE.
+
+MEJORA UX PENDIENTE
+PROPUESTA, no aplicada durante CU7: `CHECKLIST: CERTIFICADO` es poco autoexplicativo para personas nuevas. Evaluar una redacción de interfaz como `Si apruebas este plan, responde: CHECKLIST: CERTIFICADO`, preservando el comando estable y P1.
+
+DECISIÓN POST-CU7
+PENDIENTE DE DECISIÓN HUMANA. No construir CRL5 ni iniciar CU12-CU15 por inferencia.
+Opciones para la siguiente sesión:
+A) construir/probar CRL5 focalizada en Global/TL_CLOSE y regresiones observadas;
+B) congelar CRL4 y avanzar a CU12, CU13, CU14 y CU15 para validar flujos GBA más realistas.
+La siguiente sesión debe comenzar analizando en conjunto CU3=8 y CU7=7 antes de elegir.
 
 ARTEFACTOS DE RETOMA
 - `evidencia_sintetica/BotConsultor_V9_description_candidate.txt`
@@ -103,7 +128,7 @@ ARTEFACTOS DE RETOMA
 - `321_registro_resultados_pruebas.txt`
 
 PROTOCOLO DE RETOMA
-Refrescar main y registrar SHA; leer README/000/002/010/120/230/330 y documentos aplicables; leer P1, 320/321, resume CRL4, Description y CRL4; verificar Instructions <=8000; cargar Description V9 + CRL4 en Copilot; abrir chat nuevo; ejecutar CU3 con correcciones en cero; después ejecutar CU7; no editar configuración durante un caso. Tras ambos resultados, esperar decisión humana CRL5 vs CU12–CU15.
+Refrescar `main` y registrar SHA; leer README/000/002/010/120/230/330 y documentos aplicables; leer P1, 320/321, resume CRL4, Description y CRL4; confirmar gate Instructions <=8000. Revisar resultados CRL4/CU3 y CRL4/CU7. No editar configuración ni iniciar nuevos casos hasta que el humano decida expresamente CRL5 vs CU12-CU15.
 
 NEXT_GATE
-Ejecutar V9-CRL4/CU3 desde chat nuevo. Primer gate: P1-STRICT, BASE `.md` automático, Global NO CALCULABLE y checklist exactamente INICIAR/DERIVAR durante PREP. Después de CU3, ejecutar CU7 antes de decidir el siguiente ciclo.
+Analizar resultados CRL4 completos: CU3=8 correcciones y CU7=7 correcciones. Esperar decisión humana entre CRL5 y CU12-CU15.

@@ -15,72 +15,78 @@ KNOWLEDGE_TEST_EXPECTED = CONDOR-742
 GITHUB_AGENT_EXPERIMENT_STATUS = PAUSADO
 LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = DISEÑO VALIDADO / CAMPAÑA SINTÉTICA EN ITERACIÓN
 BOTCONSULTOR_CONFIG_BASE = V8_PRUEBAS
-BOTCONSULTOR_CONFIG_CANDIDATE = V9_CRL2
+BOTCONSULTOR_CONFIG_CANDIDATE = V9_CRL3
 BOTCONSULTOR_INSTRUCTIONS_MAX_CHARACTERS = 8000
 BOTCONSULTOR_DESCRIPTION_MAX_CHARACTERS = NO DEFINIDO EN CANON
 BOTCONSULTOR_V9_DESCRIPTION_CANDIDATE_CHARACTERS = 526
 BOTCONSULTOR_V9_CRL2_INSTRUCTIONS_CHARACTERS = 7425
-BOTCONSULTOR_V9_CRL2_INSTRUCTIONS_RESERVE = 575
+BOTCONSULTOR_V9_CRL3_INSTRUCTIONS_CHARACTERS = 7917
+BOTCONSULTOR_V9_CRL3_INSTRUCTIONS_RESERVE = 83
 BOTCONSULTOR_V9_SOURCE_STATUS = PROPUESTA / NO VIGENTE / PERSISTIDA COMO EVIDENCIA SINTÉTICA
-BOTCONSULTOR_V9_CRL1_STATUS = PROBADA EN CU3 / NO PROMOVIDA A CONFIGURACIÓN BASE
-BOTCONSULTOR_V9_CRL2_STATUS = CANDIDATA CONSTRUIDA / GATE 8000 CUMPLIDO / PERSISTIDA / NO PROBADA
-BOTCONSULTOR_PRESENTATION_CONTRACT = P1 VIGENTE
-BOTCONSULTOR_TEST_CURRENT_CASE = V9-CRL2-CU3 PENDIENTE DE SMOKE TEST
-BOTCONSULTOR_V9_CU3_CRL1_CORRECTIONS = 13 TOTAL / 7 ALTA / 6 MEDIA / 0 CRÍTICA
-BOTCONSULTOR_V8_CU3_REFERENCE = 24 TOTAL / INCLUÍA 1 CRÍTICA
-BOTCONSULTOR_V9_CU3_CRL1_REDUCTION = 11 CORRECCIONES / 45,8 %
+BOTCONSULTOR_V9_CRL1_STATUS = PROBADA EN CU3 / NO PROMOVIDA
+BOTCONSULTOR_V9_CRL2_STATUS = PROBADA EN CU3 / 11 CORRECCIONES / NO PROMOVIDA
+BOTCONSULTOR_V9_CRL3_STATUS = CANDIDATA CONSTRUIDA / GATE 8000 CUMPLIDO / PERSISTIDA / NO PROBADA
+BOTCONSULTOR_PRESENTATION_CONTRACT = P1-STRICT VIGENTE
+BOTCONSULTOR_TEST_CURRENT_CASE = V9-CRL3-CU3 PENDIENTE
+BOTCONSULTOR_V8_CU3_REFERENCE = 24 TOTAL / 1 CRÍTICA
+BOTCONSULTOR_V9_CU3_CRL1 = 13 TOTAL / 7 ALTA / 6 MEDIA / 0 CRÍTICA
+BOTCONSULTOR_V9_CU3_CRL2 = 11 TOTAL / 6 ALTA / 5 MEDIA / 0 CRÍTICA
 
 ESTADO
-El experimento de Agent Builder con gobernanza pública en GitHub/GitHub Pages permanece PAUSADO. La gobernanza pública sigue siendo exclusivamente experimental y no está autorizado almacenar operación real o confidencial.
+El experimento público permanece exclusivamente experimental. No está autorizado almacenar operación real o confidencial.
 
-El canon local portátil permanece validado. BotConsultor V8 continúa como línea base canónica de referencia. V9 CRL1 queda como candidata histórica probada en CU3 y V9 CRL2 pasa a ser la candidata actual de prueba; ninguna de las dos está promovida como configuración base.
+BotConsultor V8 continúa como línea base de referencia. CRL1 y CRL2 son candidatas históricas probadas; CRL3 pasa a ser la candidata actual. Ninguna V9 está promovida como configuración base.
 
-V9 SOURCE ES, Description V9, CRL1 y CRL2 están persistidas bajo `evidencia_sintetica/` como artefactos NO NORMATIVOS. La presencia de esos archivos en `main` no promueve sus propuestas internas. CORE/AUX/OUT, TICKET→PROYECTO y FB@BOT siguen requiriendo promoción normativa específica antes de considerarse vigentes.
+V9 SOURCE ES, Description y variantes CRL están bajo `evidencia_sintetica/` como artefactos NO NORMATIVOS. CORE/AUX/OUT, TICKET→PROYECTO y FB@BOT siguen requiriendo promoción normativa específica.
 
 GATE DE TAMAÑO
-`020_parametros_inicializacion.txt` establece máximo obligatorio de 8000 caracteres para Instructions antes de entregar o probar una candidata.
-
-CRL2 fue medida antes de persistir:
-- Instructions = 7425 caracteres;
-- límite = 8000;
-- reserva = 575 caracteres;
+`020_parametros_inicializacion.txt` exige Instructions <= 8000 caracteres antes de entregar/probar.
+CRL3 fue medida antes de persistir:
+- Instructions = 7917;
+- máximo = 8000;
+- reserva = 83;
 - resultado = CUMPLE.
 
-La Description V9 candidata mide 526 caracteres. El canon actual NO DEFINE un máximo de caracteres para Description; no debe inventarse uno. Si la plataforma impone un límite adicional, debe confirmarse y persistirse antes de tratarlo como requisito canónico.
+PRESENTACIÓN P1-STRICT
+`117_contrato_presentacion_botconsultor.md` fue endurecido como regla transversal vigente. Prioridad operativa: toda respuesta normal debe mantener checklist Markdown vertical, un ítem por línea física con `- <emoji> <actividad>`, máximo cinco ítems, una sola siguiente acción y verificación de formato antes de enviar. El objetivo es minimizar scroll y evitar respuestas horizontalmente concatenadas.
 
-Una futura variante de Instructions que exceda 8000 caracteres no puede declararse lista para prueba: debe compactarse sin pérdida de invariantes, gates ni comportamiento requerido.
+RESULTADO V9 CRL2 / CU3
+CRL2 produjo 11 correcciones: 6 ALTA, 5 MEDIA, 0 CRÍTICA. V8 había producido 24 y CRL1 13.
 
-PRESENTACIÓN P1
-`117_contrato_presentacion_botconsultor.md` continúa VIGENTE para todas las versiones futuras de BotConsultor. Objetivo: respuestas escuetas, checklist vertical, indicadores visuales y mínimo scroll. El detalle durable debe residir en el `.md`, no repetirse rutinariamente en el chat.
+Mejoras confirmadas de CRL2:
+- el tramo horario del emisor sobrevivió al DERIVAR y al chat nuevo;
+- el receptor no heredó horas y abrió tramo independiente solo al iniciar;
+- el Global certificado sobrevivió al handoff/carga;
+- el foco no avanzó automáticamente sin instrucción humana;
+- diseño no se confundió con implementación.
 
-RESULTADO DE REFERENCIA V9-CRL1 / CU3
-El stress test sintético CU3 que en V8 produjo 24 correcciones y una desviación CRÍTICA produjo en V9 CRL1 13 correcciones: 7 ALTA, 6 MEDIA y 0 CRÍTICA. Reducción: 11 correcciones = 45,8 %.
+Pendientes observados en CRL2:
+1. BASE automático inicial.
+2. Consistencia P1 vertical.
+3. Alcance Global: NO APLICA para dominios fuera del objetivo actual, sin ampliar ciclo futuro.
+4. TL_CLOSE debe disparar `.md` automático/pregunta de correo.
+5. Nombre físico estable del expediente.
+6. Handoff efectivo solo tras confirmación de recepción.
 
-No se reprodujo la pérdida crítica del Checklist Global certificado durante handoff. El árbol, Global 33 %, pendientes y evidencia sobrevivieron a derivación/carga en chat nuevo; el receptor no heredó automáticamente horas; el avance 33→67→100 fue coherente; diseño no se trató como implementación; Global 100 % no se confundió con cierre formal.
-
-OBJETIVOS V9 CRL2
-1. Persistencia automática: `BASE`, `TL_CLOSE`, `DERIVAR` y `G100` se modelan como eventos atómicos obligatorios; `FILE` debe ser un `.md` actualizado real cuando la plataforma tenga capacidad; `TL_CLOSE/G100` preguntan por correo sin enviar automáticamente.
-2. Tiempo/handoff: toda consolidación preserva todos los tramos; DERIVAR cierra/persiste el tramo del emisor si inicio/fin están confirmados; el receptor abre un tramo independiente solo al iniciar.
-3. Integridad Global: antes de LISTO PARA VALIDACIÓN se cubren o justifican ANÁLISIS, DISEÑO, EJECUCIÓN/DESARROLLO, PRUEBAS e HITOS DE CIERRE; un hijo no puede completarse por inferencia o solo para cerrar un padre.
-4. Control humano del foco: certificación, cierre TL, carga, desbloqueo o disponibilidad no activan automáticamente el siguiente trabajo; `EN CURSO` requiere instrucción humana explícita/inequívoca.
-5. Mantener todas las no-regresiones ya observadas en CRL1/CU3 y aplicar P1 como presentación fija.
+OBJETIVOS V9 CRL3
+1. P1-STRICT y FORMAT_CHECK obligatorios en toda respuesta normal.
+2. BASE inmediato cuando tipo/cliente/módulo/tema ya son conocidos; datos descubribles no bloquean.
+3. Global limitado al alcance actual; cobertura semántica no autoriza ampliar trabajo futuro.
+4. TL_CLOSE definido como transición no-D→D con evento atómico completo antes de responder.
+5. Nombre físico estable sin `rev`, `handoff`, `final` ni estados.
+6. Destinatario permanece propuesto hasta recepción confirmada.
+7. Preservar todas las mejoras CRL2 de handoff, tiempo y foco humano.
 
 ARTEFACTOS DE RETOMA
 - `evidencia_sintetica/BotConsultor_V9_description_candidate.txt`
-- `evidencia_sintetica/BotConsultor_V9_instructions_CRL2_candidate.txt`
-- `evidencia_sintetica/BotConsultor_V9_CRL2_resume.md`
+- `evidencia_sintetica/BotConsultor_V9_instructions_CRL3_candidate.txt`
+- `evidencia_sintetica/BotConsultor_V9_CRL3_resume.md`
 - `117_contrato_presentacion_botconsultor.md`
+- `320_plan_pruebas_proyecto.txt`
 - `321_registro_resultados_pruebas.txt`
 
 PROTOCOLO DE RETOMA
-En otro chat, antes de actuar: refrescar `main`, registrar SHA, leer README/000/002/010/120/230/330 y documentos aplicables; luego leer `BotConsultor_V9_CRL2_resume.md`, Description V9 y Instructions CRL2; volver a verificar `Instructions <= 8000`.
-
-El smoke test debe usar chat nuevo en Copilot con Description V9 + CRL2, correcciones acumuladas en cero y sin modificar la configuración durante el caso.
-
-Primer prompt sintético del smoke test CU3:
-`Tengo una actividad para ACME-DEMO, módulo FI. Necesitamos revisar por qué en algunos registros de una salida Z la columna Nombre queda vacía. Todavía no existe número de ticket.`
-
-En el primer paso verificar especialmente P1, `Global: NO CALCULABLE`, BASE sin iniciar análisis/tiempo, entrega automática de `.md` real e `INICIAR/DERIVAR` como acciones de flujo.
+Refrescar main y registrar SHA; leer README/000/002/010/120/230/330 y documentos aplicables; leer P1, 320/321, resume CRL3, Description y CRL3; verificar nuevamente Instructions <=8000; cargar Description V9 + CRL3 en Copilot; abrir chat nuevo; repetir CU3 con correcciones en cero; no editar configuración durante el caso.
 
 NEXT_GATE
-Cargar Description V9 + Instructions CRL2 en Copilot y ejecutar desde chat nuevo el smoke test V9-CRL2/CU3. Registrar todas las desviaciones y comparar contra CRL1 antes de ampliar a otros casos.
+Ejecutar V9-CRL3/CU3 desde chat nuevo. En la primera respuesta priorizar verificación de P1-STRICT, BASE `.md` automático, Global NO CALCULABLE y únicamente INICIAR/DERIVAR durante PREP.

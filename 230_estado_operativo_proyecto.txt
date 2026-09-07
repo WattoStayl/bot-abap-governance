@@ -29,7 +29,10 @@ BOTCONSULTOR_V9_CRL3_STATUS = PROBADA EN CU3 / 11 CORRECCIONES / NO PROMOVIDA
 BOTCONSULTOR_V9_CRL4_STATUS = CANDIDATA CONSTRUIDA / GATE 8000 CUMPLIDO / PERSISTIDA / NO PROBADA
 BOTCONSULTOR_PRESENTATION_CONTRACT = P1-STRICT VIGENTE
 BOTCONSULTOR_TEST_CURRENT_CASE = V9-CRL4-CU3 PENDIENTE
+BOTCONSULTOR_TEST_SEQUENCE = CU3 -> CU7 -> DECISIÓN(CRL5 | CU12-CU15)
+BOTCONSULTOR_POST_CU7_GATE = PENDIENTE DECISIÓN HUMANA
 BOTCONSULTOR_V8_CU3_REFERENCE = 24 TOTAL / 1 CRÍTICA
+BOTCONSULTOR_V8_CU7_REFERENCE = 21 TOTAL
 BOTCONSULTOR_V9_CU3_CRL1 = 13 TOTAL / 7 ALTA / 6 MEDIA / 0 CRÍTICA
 BOTCONSULTOR_V9_CU3_CRL2 = 11 TOTAL / 6 ALTA / 5 MEDIA / 0 CRÍTICA
 BOTCONSULTOR_V9_CU3_CRL3 = 11 TOTAL / 5 ALTA / 5 MEDIA / 1 BAJA / 0 CRÍTICA
@@ -83,6 +86,14 @@ OBJETIVOS V9 CRL4
 6. G100 usa la hora confirmada en el mismo turno para cerrar el tramo activo antes de CONS.
 7. Preservar P1-STRICT, handoff, tiempos, NO APLICA y control humano del foco ya mejorados.
 
+SECUENCIA DE VALIDACIÓN CRL4
+1. Ejecutar primero CU3 completo con correcciones desde cero para comparar contra V8=24, CRL1=13, CRL2=11 y CRL3=11.
+2. A continuación ejecutar CU7 completo. Referencia histórica V8/CU7 = 21 correcciones. Este caso será el stress test de cambio de alcance, FALLO vs CONTROL DE CAMBIO, autorización y replanificación.
+3. Con los resultados de CU3 y CU7, el humano decidirá expresamente entre:
+   - construir/probar CRL5 si aún se justifican ajustes del motor;
+   - mantener CRL4 y avanzar a CU12, CU13, CU14 y CU15.
+4. La decisión CRL5 vs CU12–CU15 queda PENDIENTE; no debe inferirse anticipadamente.
+
 ARTEFACTOS DE RETOMA
 - `evidencia_sintetica/BotConsultor_V9_description_candidate.txt`
 - `evidencia_sintetica/BotConsultor_V9_instructions_CRL4_candidate.txt`
@@ -92,7 +103,7 @@ ARTEFACTOS DE RETOMA
 - `321_registro_resultados_pruebas.txt`
 
 PROTOCOLO DE RETOMA
-Refrescar main y registrar SHA; leer README/000/002/010/120/230/330 y documentos aplicables; leer P1, 320/321, resume CRL4, Description y CRL4; verificar Instructions <=8000; cargar Description V9 + CRL4 en Copilot; abrir chat nuevo; repetir CU3 con correcciones en cero; no editar configuración durante el caso.
+Refrescar main y registrar SHA; leer README/000/002/010/120/230/330 y documentos aplicables; leer P1, 320/321, resume CRL4, Description y CRL4; verificar Instructions <=8000; cargar Description V9 + CRL4 en Copilot; abrir chat nuevo; ejecutar CU3 con correcciones en cero; después ejecutar CU7; no editar configuración durante un caso. Tras ambos resultados, esperar decisión humana CRL5 vs CU12–CU15.
 
 NEXT_GATE
-Ejecutar V9-CRL4/CU3 desde chat nuevo. Primer gate: P1-STRICT, BASE `.md` automático, Global NO CALCULABLE y checklist exactamente INICIAR/DERIVAR durante PREP.
+Ejecutar V9-CRL4/CU3 desde chat nuevo. Primer gate: P1-STRICT, BASE `.md` automático, Global NO CALCULABLE y checklist exactamente INICIAR/DERIVAR durante PREP. Después de CU3, ejecutar CU7 antes de decidir el siguiente ciclo.

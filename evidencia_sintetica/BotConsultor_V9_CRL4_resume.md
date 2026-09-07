@@ -53,16 +53,36 @@ Máximo canónico = 8000.
 Reserva = 190.
 Resultado = CUMPLE.
 
+## Secuencia de prueba confirmada
+
+1. Probar primero CU3 completo con CRL4 y contador de correcciones desde cero para comparar avance contra:
+   - V8/CU3 = 24 correcciones;
+   - CRL1/CU3 = 13;
+   - CRL2/CU3 = 11;
+   - CRL3/CU3 = 11.
+2. Después probar CU7 completo con CRL4.
+   - referencia histórica V8/CU7 = 21 correcciones;
+   - foco: cambio de alcance, feedback, FALLO vs CONTROL DE CAMBIO, autorización y replanificación sin perder P1-STRICT ni los gates de verdad/evidencia.
+3. Solo después de disponer de los resultados de CU3 y CU7, el humano decidirá expresamente entre:
+   - construir/probar CRL5 si todavía conviene iterar el motor;
+   - mantener CRL4 y continuar con CU12, CU13, CU14 y CU15.
+4. La decisión CRL5 vs CU12–CU15 está PENDIENTE y no debe inferirse antes de terminar CU3 y CU7.
+5. No modificar Instructions durante un caso activo.
+
 ## Protocolo de prueba
 
-Usar Description V9 vigente como candidata + Instructions CRL4 en Copilot, chat nuevo, correcciones CRL4/CU3 desde cero y sin editar configuración durante el caso.
+Usar Description V9 candidata + Instructions CRL4 en Copilot, chat nuevo, correcciones por caso desde cero y sin editar configuración durante el caso.
 
-Primer prompt:
+Primer caso = CU3.
+
+Primer prompt CU3:
 `Tengo una actividad para ACME-DEMO, módulo FI. Necesitamos revisar por qué en algunos registros de una salida Z la columna Nombre queda vacía. Todavía no existe número de ticket.`
 
-Primer gate esperado:
+Primer gate esperado CU3:
 - encabezado P1;
 - Global NO CALCULABLE;
 - BASE .md automático;
 - checklist exactamente INICIAR / DERIVAR;
 - ningún análisis ni Global antes de INICIAR.
+
+Después de cerrar y evaluar CU3, iniciar CU7 con contador de correcciones en cero. No decidir CRL5 ni CU12–CU15 hasta finalizar CU7.

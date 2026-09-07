@@ -94,3 +94,68 @@ MEJORA CUALITATIVA = CRL2 corrigió la persistencia del tramo horario del emisor
 
 DECISIÓN POST-CRL2
 Construir V9 CRL3 preservando las mejoras de CRL2 y priorizando P1 estricto: checklist Markdown vertical coherente en toda respuesta. Corregir además BASE, alcance/NO APLICA, TL_CLOSE automático, nombre físico estable y confirmación de handoff.
+
+REGISTRO SINTÉTICO
+TEST_ID = T-BOTCONSULTOR-V9-CRL4-CU3
+CHANGE_ID = BOTCONSULTOR-V9-CRL4
+ENVIRONMENT = Microsoft Copilot / flujo sintético CU3 con handoff mediante expediente Markdown / chat nuevo receptor
+PRECONDITIONS = Description V9 + Instructions CRL4; P1 vigente; caso ACME-DEMO/FI; sin datos operativos reales; Instructions 7810/8000 caracteres
+INPUT = CU3 completo: BASE → START/PLAN → CERT → análisis → DERIVAR → LOAD receptor → tiempos → START receptor → registro de causa/propuesta → pausa
+EXPECTED = Mejorar continuidad, máquina PREP/PLAN/EXEC, Global, eventos documentales, handoff, tiempos, control humano del foco y P1
+ACTUAL = BASE/PREP y Global NO CALCULABLE funcionaron; START entró a PLAN; CERT no activó foco; handoff preservó estado y tiempo del emisor; receptor no heredó horas; G100/tiempo mejoró. Persistieron desviaciones en cobertura/hierarquía del Global, trazabilidad del porcentaje, evento TL_CLOSE, LOAD, foco y modificación silenciosa del árbol certificado.
+RESULT = FAIL
+EVIDENCE = Evaluación sintética CRL4/CU3 con 8 correcciones: 4 ALTA, 4 MEDIA, 0 BAJA, 0 CRÍTICA. Referencia detallada: evidencia_sintetica/BotConsultor_V9_CRL4_resume.md
+LIMITATIONS = No se probaron efectos externos reales; desviaciones derivadas de una raíz ya registrada no se duplicaron.
+EXECUTED_BY = HUMANO_EVALUADOR + BOTCONSULTOR
+EXECUTED_AT = 2026-09-07
+
+CORRECCIONES V9-CRL4-CU3
+V9-CRL4-CU3-C01 = ALTA | Checklist Global sin cobertura explícita de los cinco dominios semánticos obligatorios.
+V9-CRL4-CU3-C02 = ALTA | Global 20% no trazable con el árbol/checklist certificado visible.
+V9-CRL4-CU3-C03 = ALTA | Actualización documental ambigua respecto de la matriz cerrada; si hubo TL_CLOSE faltó FILE + MAIL?.
+V9-CRL4-CU3-C04 = MEDIA | Handoff expresado como ya realizado antes de confirmarse recepción del receptor.
+V9-CRL4-CU3-C05 = MEDIA | LOAD mostró PREP INICIAR/DERIVAR en vez del estado de trabajo reconstruido.
+V9-CRL4-CU3-C06 = MEDIA | Consulta puntual de horas omitió P1-STRICT.
+V9-CRL4-CU3-C07 = MEDIA | START genérico en S2 activó foco sin leaf inequívoco elegido por humano.
+V9-CRL4-CU3-C08 = ALTA | Modificación silenciosa del Global certificado al introducir nuevos pendientes/estados.
+
+COMPARACIÓN CRL4 / CU3
+CU3 V8 = 24.
+CU3 CRL1 = 13.
+CU3 CRL2 = 11.
+CU3 CRL3 = 11.
+CU3 CRL4 = 8.
+REDUCCIÓN CRL4 vs V8 = 66,7 %.
+REDUCCIÓN CRL4 vs CRL3 = 27,3 %.
+
+REGISTRO SINTÉTICO
+TEST_ID = T-BOTCONSULTOR-V9-CRL4-CU7
+CHANGE_ID = BOTCONSULTOR-V9-CRL4
+ENVIRONMENT = Microsoft Copilot / flujo sintético CU7 / cambio de alcance y feedback durante trabajo
+PRECONDITIONS = Description V9 + Instructions CRL4; P1 vigente; caso ACME-DEMO/FI; sin datos operativos reales; Instructions 7810/8000 caracteres
+INPUT = CU7 completo: BASE → PLAN/CERT → análisis → CONTROL DE CAMBIO no aprobado → impacto/estimación → autorización → replan/CERT → FALLO → cierre de FALLO → diseño Segmento → criterios de validación → G100 → auditoría de tiempo → intento de cierre definitivo
+EXPECTED = Clasificar FALLO vs CONTROL DE CAMBIO antes de modificar; exigir autorización antes de ampliar alcance; replanificar preservando trabajo; separar diseño/ejecución; ejecutar TL_CLOSE/G100 completos; no cerrar formalmente sin evidencia
+ACTUAL = CONTROL DE CAMBIO y FALLO fueron clasificados correctamente; no se amplió alcance antes de autorización; replanificación volvió a PLAN y CERT; G100 entregó .md, ejecutó MAIL?, cerró tramo 09:00→11:15 y rechazó cierre formal por falta de implementación/pruebas. Persistieron fallos estructurales de Global y repetidas omisiones de TL_CLOSE.
+RESULT = FAIL
+EVIDENCE = Evaluación sintética CRL4/CU7 con 7 correcciones: 6 ALTA, 1 MEDIA, 0 BAJA, 0 CRÍTICA. Referencia detallada: evidencia_sintetica/BotConsultor_V9_CRL4_resume.md
+LIMITATIONS = No se realizó implementación SAP real ni envío real de correo; el caso es sintético. Los efectos derivados de C01 no se duplicaron como correcciones nuevas.
+EXECUTED_BY = HUMANO_EVALUADOR + BOTCONSULTOR
+EXECUTED_AT = 2026-09-07
+
+CORRECCIONES V9-CRL4-CU7
+V9-CRL4-CU7-C01 = ALTA | Global inicial omitió cobertura explícita de ANALISIS, DISEÑO, EJECUCIÓN/DESARROLLO, PRUEBAS e HITOS DE CIERRE.
+V9-CRL4-CU7-C02 = ALTA | Al pasar 0→60% omitió TL_CLOSE → consolidación, .md automático y MAIL?.
+V9-CRL4-CU7-C03 = MEDIA | CONTROL DE CAMBIO no autorizado apareció como nodo de trabajo del checklist vigente.
+V9-CRL4-CU7-C04 = ALTA | Replanificación marcó corrección de Nombre completada cuando solo análisis/diseño estaban demostrados.
+V9-CRL4-CU7-C05 = ALTA | Re-cierre de FALLO entregó .md pero omitió MAIL? de TL_CLOSE.
+V9-CRL4-CU7-C06 = ALTA | Cierre del diseño de Segmento 40→60% omitió TL_CLOSE → CONS/FILE + MAIL?.
+V9-CRL4-CU7-C07 = ALTA | Cierre de criterios de validación 60→80% omitió TL_CLOSE → CONS/FILE + MAIL?.
+
+COMPARACIÓN CRL4 / CU7
+CU7 V8 = 21.
+CU7 CRL4 = 7.
+REDUCCIÓN CRL4 vs V8 = 66,7 %.
+HALLAZGO PRINCIPAL = No se reprodujo el fallo histórico de ejecutar silenciosamente una ampliación: CRL4 clasificó CONTROL DE CAMBIO, esperó autorización y distinguió posteriormente un FALLO dentro del alcance vigente.
+
+GATE POST-CRL4
+CU3 y CU7 están COMPLETADOS. La decisión siguiente queda PENDIENTE DE DECISIÓN HUMANA: construir/probar CRL5 o mantener CRL4 y avanzar a CU12-CU15. No inferir ni ejecutar la opción antes de la revisión humana conjunta de resultados.

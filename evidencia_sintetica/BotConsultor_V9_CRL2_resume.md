@@ -8,6 +8,7 @@ BASE_CANONICA_LEIDA = main @ 54409929b85ce791be1c8c5f62dd551627080c7e
 
 - Description candidata: `evidencia_sintetica/BotConsultor_V9_description_candidate.txt`
   - longitud medida: 526 caracteres.
+  - máximo canónico: NO DEFINIDO.
 - Instructions CRL2 candidata: `evidencia_sintetica/BotConsultor_V9_instructions_CRL2_candidate.txt`
   - longitud medida: 7425 caracteres.
   - SHA-256 del contenido medido localmente antes de persistir: `ac887eefad22ddc427e2dc9d5af05a859ffc97547960ae0829b0135ea2697082`.
@@ -26,7 +27,9 @@ CRL2 cumple el gate:
 - máximo: 8000;
 - reserva: 575 caracteres.
 
-No declarar lista para prueba una futura variante que exceda 8000 caracteres; debe compactarse antes sin perder invariantes, gates ni comportamiento requerido.
+No declarar lista para prueba una futura variante de Instructions que exceda 8000 caracteres; debe compactarse antes sin perder invariantes, gates ni comportamiento requerido.
+
+El canon actual no define un máximo para Description. Si la plataforma impone un límite, debe confirmarse y persistirse antes de tratarlo como requisito canónico; no inferirlo.
 
 ## 3. Antecedente CRL1 / CU3
 

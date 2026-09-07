@@ -1,88 +1,123 @@
 # BotConsultor V9 CRL4 — Retoma
 
-ESTADO = PROPUESTA / NO VIGENTE / NO PROBADA
-BASE DE COMPARACIÓN = CU3
+ESTADO = PROBADA EN CU3 Y CU7 / NO PROMOVIDA / DECISIÓN POST-CU7 PENDIENTE
+CONFIGURACIÓN = Description V9 candidata + Instructions CRL4
+GATE INSTRUCTIONS = 7810 / 8000 caracteres; reserva 190; CUMPLE
+P1 = VIGENTE
 
-## Resultado anterior
+## Resultado CRL4 / CU3
 
-V9 CRL3 / CU3 terminó con 11 correcciones:
-- 5 ALTA
-- 5 MEDIA
-- 1 BAJA
+V9-CRL4-CU3 terminó con **8 correcciones**:
+- 4 ALTA
+- 4 MEDIA
+- 0 BAJA
 - 0 CRÍTICA
 
-Comparación: V8=24; CRL1=13; CRL2=11; CRL3=11.
+Comparación CU3:
+- V8 = 24
+- CRL1 = 13
+- CRL2 = 11
+- CRL3 = 11
+- CRL4 = 8
 
-Mejoras cualitativas confirmadas de CRL3:
-- P1-STRICT produjo checklist vertical consistente en la mayor parte del flujo;
-- BASE automático y nombre estable del expediente mejoraron;
-- el Global respetó NO APLICA para ejecución/pruebas fuera del alcance;
-- handoff preservó Global y tiempo del emisor;
-- receptor no heredó horas;
-- foco siguió bajo control humano.
+Reducción CRL4 vs V8 = 66.7%.
+Reducción CRL4 vs CRL3 = 27.3%.
 
-Pendientes observados en CRL3:
-1. antes de certificación llegó a mostrar Global 0% en vez de NO CALCULABLE;
-2. PREP incluyó metadatos del expediente como ítems de checklist;
-3. START entró inicialmente en ejecución antes de construir/certificar G;
-4. datos descubribles fueron tratados como bloqueantes;
-5. PLAN y START generaron archivo/revisión sin evento aplicable;
-6. checklist incluyó metadatos como “Checklist certificado” o “Expediente actualizado”;
-7. TL_CLOSE no completó siempre FILE + MAIL?;
-8. G100 no completó MAIL?;
-9. G100 dejó activo el tramo de Daniela pese a hora 11:45 confirmada.
+### Correcciones CU3
 
-## Diseño CRL4
+- `V9-CRL4-CU3-C01 — ALTA` — El Checklist Global no cubrió explícitamente los cinco dominios semánticos obligatorios del alcance; debía representar ANÁLISIS, DISEÑO, EJECUCIÓN/DESARROLLO, PRUEBAS e HITOS DE CIERRE como aplicables o NO APLICA justificados.
+- `V9-CRL4-CU3-C02 — ALTA` — El Global 20% no fue trazable con el Checklist Global certificado visible; el árbol/hierarquía gobernante y el porcentaje quedaron inconsistentes.
+- `V9-CRL4-CU3-C03 — ALTA` — La actualización documental durante el análisis no fue coherente con la matriz cerrada de eventos: si no hubo TL_CLOSE no correspondía archivo, y si hubo TL_CLOSE faltó completar FILE + MAIL?.
+- `V9-CRL4-CU3-C04 — MEDIA` — El handoff se expresó como ya realizado antes de confirmarse la recepción del receptor; debía mantenerse destinataria propuesta / recepción pendiente.
+- `V9-CRL4-CU3-C05 — MEDIA` — Tras LOAD reconstruyó Global y estado pero mostró checklist PREP `INICIAR/DERIVAR` en vez de los pendientes reales del expediente.
+- `V9-CRL4-CU3-C06 — MEDIA` — Una consulta puntual de auditoría horaria omitió P1-STRICT completo.
+- `V9-CRL4-CU3-C07 — MEDIA` — En S2, `INICIAR` sin leaf específico activó automáticamente un foco; el foco debía quedar bajo control humano.
+- `V9-CRL4-CU3-C08 — ALTA` — Modificó silenciosamente el Global certificado al introducir nuevos pendientes y convertir una restricción en tarea completada.
 
-CRL4 introduce:
-- máquina cerrada S0 PREP → S1 PLAN → S2 EXEC;
-- START desde PREP solo mueve a PLAN y nunca ejecuta análisis;
-- Global NO_CALCULABLE obligatorio antes de CHECKLIST: CERTIFICADO;
-- matriz cerrada de auto-write: solo BASE, TL_CLOSE, DERIVAR, G100 y USER_E;
-- START/PLAN/CERT/LOAD no consolidan ni generan revisión/archivo;
-- checklist operativo solo contiene estados de trabajo, nunca metadatos documentales;
-- TL_CLOSE/G100 obligan FILE + MAIL? antes de responder;
-- si TL_CLOSE causa G100 se ejecuta una sola cadena combinada;
-- G100 usa una hora confirmada en el mismo turno para cerrar el tramo activo antes de CONS;
-- P1-STRICT se mantiene como contrato visual.
+### Fortalezas CU3
 
-## Gate de tamaño
+- PREP generó BASE automático, Global NO CALCULABLE y exactamente INICIAR/DERIVAR.
+- START desde PREP entró a PLAN y CERT no activó trabajo.
+- handoff conservó estado y cerró el tramo del emisor.
+- receptor no heredó horas.
+- G100 cerró correctamente el tramo cuando la hora final estaba confirmada.
+- P1 fue sustancialmente más consistente que versiones anteriores.
 
-Instructions CRL4 = 7810 caracteres.
-Máximo canónico = 8000.
-Reserva = 190.
-Resultado = CUMPLE.
+## Resultado CRL4 / CU7
 
-## Secuencia de prueba confirmada
+V9-CRL4-CU7 terminó con **7 correcciones**:
+- 6 ALTA
+- 1 MEDIA
+- 0 BAJA
+- 0 CRÍTICA
 
-1. Probar primero CU3 completo con CRL4 y contador de correcciones desde cero para comparar avance contra:
-   - V8/CU3 = 24 correcciones;
-   - CRL1/CU3 = 13;
-   - CRL2/CU3 = 11;
-   - CRL3/CU3 = 11.
-2. Después probar CU7 completo con CRL4.
-   - referencia histórica V8/CU7 = 21 correcciones;
-   - foco: cambio de alcance, feedback, FALLO vs CONTROL DE CAMBIO, autorización y replanificación sin perder P1-STRICT ni los gates de verdad/evidencia.
-3. Solo después de disponer de los resultados de CU3 y CU7, el humano decidirá expresamente entre:
-   - construir/probar CRL5 si todavía conviene iterar el motor;
-   - mantener CRL4 y continuar con CU12, CU13, CU14 y CU15.
-4. La decisión CRL5 vs CU12–CU15 está PENDIENTE y no debe inferirse antes de terminar CU3 y CU7.
-5. No modificar Instructions durante un caso activo.
+Comparación CU7:
+- V8 = 21
+- CRL4 = 7
 
-## Protocolo de prueba
+Reducción CRL4 vs V8 = 66.7%.
 
-Usar Description V9 candidata + Instructions CRL4 en Copilot, chat nuevo, correcciones por caso desde cero y sin editar configuración durante el caso.
+### Correcciones CU7
 
-Primer caso = CU3.
+- `V9-CRL4-CU7-C01 — ALTA` — El Checklist Global inicial no cubrió explícitamente ANÁLISIS, DISEÑO, EJECUCIÓN/DESARROLLO, PRUEBAS e HITOS DE CIERRE; omitió implementación y pruebas como trabajo real del alcance.
+- `V9-CRL4-CU7-C02 — ALTA` — Al completar tres puntos superiores y pasar Global 0→60% omitió el evento TL_CLOSE obligatorio: consolidación, .md automático y MAIL?.
+- `V9-CRL4-CU7-C03 — MEDIA` — Un CONTROL DE CAMBIO aún no autorizado apareció como nodo del checklist operativo vigente; debía permanecer fuera del árbol certificado hasta autorización.
+- `V9-CRL4-CU7-C04 — ALTA` — Tras aprobar el CONTROL DE CAMBIO, la replanificación marcó como COMPLETADA la corrección de Nombre aunque solo análisis/diseño estaban demostrados; confundió diseño con ejecución.
+- `V9-CRL4-CU7-C05 — ALTA` — Al volver a cerrar trabajo afectado por un FALLO, actualizó Global y entregó .md pero omitió MAIL? del TL_CLOSE.
+- `V9-CRL4-CU7-C06 — ALTA` — Al completar el diseño de Segmento y pasar Global 40→60% omitió TL_CLOSE → CONS/FILE + MAIL?.
+- `V9-CRL4-CU7-C07 — ALTA` — Al completar criterios de validación y pasar Global 60→80% volvió a omitir TL_CLOSE → CONS/FILE + MAIL?.
 
-Primer prompt CU3:
-`Tengo una actividad para ACME-DEMO, módulo FI. Necesitamos revisar por qué en algunos registros de una salida Z la columna Nombre queda vacía. Todavía no existe número de ticket.`
+### Fortalezas CU7
 
-Primer gate esperado CU3:
-- encabezado P1;
-- Global NO CALCULABLE;
-- BASE .md automático;
-- checklist exactamente INICIAR / DERIVAR;
-- ningún análisis ni Global antes de INICIAR.
+- La ampliación Segmento fue clasificada explícitamente como CONTROL DE CAMBIO antes de modificar alcance o ejecutar.
+- Se registraron impacto y estimación manteniendo el alcance original mientras no existía aprobación.
+- Tras autorización volvió a PLAN y exigió nueva certificación.
+- El feedback posterior se clasificó correctamente como FALLO, reabriendo trabajo dentro del alcance vigente sin pedir nueva autorización de cambio.
+- Diseño se mantuvo separado de implementación en los turnos explícitos.
+- G100 generó .md, preguntó MAIL?, cerró el tramo 09:00→11:15 y no implicó cierre formal.
+- Ante la pregunta de cierre definitivo rechazó cerrar porque Segmento no estaba implementado ni probado.
 
-Después de cerrar y evaluar CU3, iniciar CU7 con contador de correcciones en cero. No decidir CRL5 ni CU12–CU15 hasta finalizar CU7.
+## Raíces residuales a analizar
+
+1. **Construcción semántica del Global**: cobertura explícita de los cinco dominios, jerarquía y trazabilidad del porcentaje.
+2. **Diseño ≠ ejecución en el árbol**: no marcar como completa una corrección si solo se demostró análisis/diseño.
+3. **TL_CLOSE determinista**: varios cierres de TL siguen sin completar CONS/FILE + MAIL?.
+4. **Trabajo no autorizado fuera del árbol vigente**: CONTROL DE CAMBIO pendiente no debe aparecer como nodo operativo.
+5. **LOAD**: reconstruir y mostrar estado de trabajo, no volver visualmente a PREP.
+6. **Control humano del foco**: START genérico en S2 no debe activar leaf.
+7. **P1 transversal**: también debe aplicarse a consultas puntuales de auditoría.
+
+## Mejora UX pendiente
+
+PROPUESTA, no aplicada durante los casos: para una persona nueva, `CHECKLIST: CERTIFICADO` no explica qué ocurrirá. Evaluar una interfaz como:
+
+`Si apruebas este plan, responde: CHECKLIST: CERTIFICADO`
+
+El comando estable puede mantenerse; la mejora es de presentación/entendimiento humano.
+
+## Lectura estratégica para la siguiente sesión
+
+CRL4 redujo aproximadamente dos tercios de las correcciones históricas en ambos stress tests y no produjo correcciones CRÍTICAS. La mejora ya no parece dispersa: los defectos remanentes están concentrados principalmente en **Global + TL_CLOSE**, con algunas regresiones menores de LOAD/foco/P1.
+
+## Decisión pendiente
+
+NO DECIDIDA. No inferir la siguiente rama.
+
+Opciones a evaluar en la próxima sesión:
+
+1. **CRL5**: iterar el motor focalizando Global, separación diseño/ejecución, TL_CLOSE y los regresores menores observados.
+2. **Mantener CRL4 y avanzar CU12–CU15**: probar flujos GBA más realistas antes de otra iteración del motor.
+
+## Protocolo de retoma
+
+1. refrescar `main` y registrar SHA;
+2. leer README/000/002/010/120/230/330;
+3. leer `117_contrato_presentacion_botconsultor.md`, `320_plan_pruebas_proyecto.txt`, `321_registro_resultados_pruebas.txt`, este resume, Description V9 y Instructions CRL4;
+4. confirmar que CRL4 sigue en 7810/8000 caracteres;
+5. revisar CU3=8 y CU7=7 en conjunto;
+6. esperar decisión humana expresa: CRL5 o CU12-CU15;
+7. no editar configuración ni iniciar un nuevo caso antes de esa decisión.
+
+## Siguiente acción
+
+Analizar los resultados completos de CRL4 y decidir expresamente entre **CRL5** y **CU12–CU15**.

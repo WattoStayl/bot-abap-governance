@@ -15,78 +15,84 @@ KNOWLEDGE_TEST_EXPECTED = CONDOR-742
 GITHUB_AGENT_EXPERIMENT_STATUS = PAUSADO
 LOCAL_PORTABLE_CANON_EXPERIMENT_STATUS = DISEÑO VALIDADO / CAMPAÑA SINTÉTICA EN ITERACIÓN
 BOTCONSULTOR_CONFIG_BASE = V8_PRUEBAS
-BOTCONSULTOR_CONFIG_CANDIDATE = V9_CRL3
+BOTCONSULTOR_CONFIG_CANDIDATE = V9_CRL4
 BOTCONSULTOR_INSTRUCTIONS_MAX_CHARACTERS = 8000
 BOTCONSULTOR_DESCRIPTION_MAX_CHARACTERS = NO DEFINIDO EN CANON
 BOTCONSULTOR_V9_DESCRIPTION_CANDIDATE_CHARACTERS = 526
-BOTCONSULTOR_V9_CRL2_INSTRUCTIONS_CHARACTERS = 7425
 BOTCONSULTOR_V9_CRL3_INSTRUCTIONS_CHARACTERS = 7917
-BOTCONSULTOR_V9_CRL3_INSTRUCTIONS_RESERVE = 83
+BOTCONSULTOR_V9_CRL4_INSTRUCTIONS_CHARACTERS = 7810
+BOTCONSULTOR_V9_CRL4_INSTRUCTIONS_RESERVE = 190
 BOTCONSULTOR_V9_SOURCE_STATUS = PROPUESTA / NO VIGENTE / PERSISTIDA COMO EVIDENCIA SINTÉTICA
 BOTCONSULTOR_V9_CRL1_STATUS = PROBADA EN CU3 / NO PROMOVIDA
 BOTCONSULTOR_V9_CRL2_STATUS = PROBADA EN CU3 / 11 CORRECCIONES / NO PROMOVIDA
-BOTCONSULTOR_V9_CRL3_STATUS = CANDIDATA CONSTRUIDA / GATE 8000 CUMPLIDO / PERSISTIDA / NO PROBADA
+BOTCONSULTOR_V9_CRL3_STATUS = PROBADA EN CU3 / 11 CORRECCIONES / NO PROMOVIDA
+BOTCONSULTOR_V9_CRL4_STATUS = CANDIDATA CONSTRUIDA / GATE 8000 CUMPLIDO / PERSISTIDA / NO PROBADA
 BOTCONSULTOR_PRESENTATION_CONTRACT = P1-STRICT VIGENTE
-BOTCONSULTOR_TEST_CURRENT_CASE = V9-CRL3-CU3 PENDIENTE
+BOTCONSULTOR_TEST_CURRENT_CASE = V9-CRL4-CU3 PENDIENTE
 BOTCONSULTOR_V8_CU3_REFERENCE = 24 TOTAL / 1 CRÍTICA
 BOTCONSULTOR_V9_CU3_CRL1 = 13 TOTAL / 7 ALTA / 6 MEDIA / 0 CRÍTICA
 BOTCONSULTOR_V9_CU3_CRL2 = 11 TOTAL / 6 ALTA / 5 MEDIA / 0 CRÍTICA
+BOTCONSULTOR_V9_CU3_CRL3 = 11 TOTAL / 5 ALTA / 5 MEDIA / 1 BAJA / 0 CRÍTICA
 
 ESTADO
 El experimento público permanece exclusivamente experimental. No está autorizado almacenar operación real o confidencial.
 
-BotConsultor V8 continúa como línea base de referencia. CRL1 y CRL2 son candidatas históricas probadas; CRL3 pasa a ser la candidata actual. Ninguna V9 está promovida como configuración base.
+BotConsultor V8 continúa como línea base de referencia. CRL1, CRL2 y CRL3 son candidatas históricas probadas. CRL4 pasa a ser la candidata actual de prueba. Ninguna V9 está promovida como configuración base.
 
 V9 SOURCE ES, Description y variantes CRL están bajo `evidencia_sintetica/` como artefactos NO NORMATIVOS. CORE/AUX/OUT, TICKET→PROYECTO y FB@BOT siguen requiriendo promoción normativa específica.
 
 GATE DE TAMAÑO
 `020_parametros_inicializacion.txt` exige Instructions <= 8000 caracteres antes de entregar/probar.
-CRL3 fue medida antes de persistir:
-- Instructions = 7917;
+CRL4 fue medida antes de persistir:
+- Instructions = 7810;
 - máximo = 8000;
-- reserva = 83;
+- reserva = 190;
 - resultado = CUMPLE.
 
 PRESENTACIÓN P1-STRICT
-`117_contrato_presentacion_botconsultor.md` fue endurecido como regla transversal vigente. Prioridad operativa: toda respuesta normal debe mantener checklist Markdown vertical, un ítem por línea física con `- <emoji> <actividad>`, máximo cinco ítems, una sola siguiente acción y verificación de formato antes de enviar. El objetivo es minimizar scroll y evitar respuestas horizontalmente concatenadas.
+`117_contrato_presentacion_botconsultor.md` continúa VIGENTE y transversal. Prioridad: checklist Markdown vertical, un ítem por línea física con `- <emoji> <actividad>`, máximo cinco ítems, una sola siguiente acción y FORMAT_CHECK antes de enviar. El detalle durable reside en el `.md`.
 
-RESULTADO V9 CRL2 / CU3
-CRL2 produjo 11 correcciones: 6 ALTA, 5 MEDIA, 0 CRÍTICA. V8 había producido 24 y CRL1 13.
+RESULTADO V9 CRL3 / CU3
+CRL3 produjo 11 correcciones: 5 ALTA, 5 MEDIA, 1 BAJA, 0 CRÍTICA. El total no mejoró respecto de CRL2, pero P1-STRICT mejoró cualitativamente la consistencia visual.
 
-Mejoras confirmadas de CRL2:
-- el tramo horario del emisor sobrevivió al DERIVAR y al chat nuevo;
-- el receptor no heredó horas y abrió tramo independiente solo al iniciar;
-- el Global certificado sobrevivió al handoff/carga;
-- el foco no avanzó automáticamente sin instrucción humana;
-- diseño no se confundió con implementación.
+Mejoras confirmadas de CRL3:
+- checklist vertical consistente durante la mayor parte del flujo;
+- BASE automático y nombre físico estable mejoraron;
+- Global justificó NO APLICA para ejecución/pruebas fuera del alcance;
+- handoff preservó Global y tramo del emisor;
+- receptor no heredó horas;
+- transferencia quedó pendiente hasta recepción confirmada;
+- foco siguió bajo control humano.
 
-Pendientes observados en CRL2:
-1. BASE automático inicial.
-2. Consistencia P1 vertical.
-3. Alcance Global: NO APLICA para dominios fuera del objetivo actual, sin ampliar ciclo futuro.
-4. TL_CLOSE debe disparar `.md` automático/pregunta de correo.
-5. Nombre físico estable del expediente.
-6. Handoff efectivo solo tras confirmación de recepción.
+Pendientes observados en CRL3:
+1. Global 0 % antes de certificar en vez de NO CALCULABLE;
+2. metadatos documentales incluidos como ítems del checklist;
+3. START entró inicialmente en ejecución antes de construir/certificar G;
+4. datos descubribles tratados como bloqueantes;
+5. PLAN/START generaron archivo o revisión sin evento aplicable;
+6. TL_CLOSE no completó siempre FILE + MAIL?;
+7. G100 no completó MAIL?;
+8. G100 dejó activo el tramo de Daniela pese a hora final confirmada.
 
-OBJETIVOS V9 CRL3
-1. P1-STRICT y FORMAT_CHECK obligatorios en toda respuesta normal.
-2. BASE inmediato cuando tipo/cliente/módulo/tema ya son conocidos; datos descubribles no bloquean.
-3. Global limitado al alcance actual; cobertura semántica no autoriza ampliar trabajo futuro.
-4. TL_CLOSE definido como transición no-D→D con evento atómico completo antes de responder.
-5. Nombre físico estable sin `rev`, `handoff`, `final` ni estados.
-6. Destinatario permanece propuesto hasta recepción confirmada.
-7. Preservar todas las mejoras CRL2 de handoff, tiempo y foco humano.
+OBJETIVOS V9 CRL4
+1. Máquina de estados cerrada S0 PREP → S1 PLAN → S2 EXEC; START desde PREP solo entra a PLAN.
+2. Global NO CALCULABLE obligatorio antes de CHECKLIST: CERTIFICADO.
+3. Matriz cerrada de auto-write: solo BASE, TL_CLOSE, DERIVAR, G100 y USER_E; START/PLAN/CERT/LOAD no generan revisión/archivo.
+4. Checklist visible contiene solo estados reales de trabajo; metadatos documentales quedan fuera del checklist.
+5. TL_CLOSE y G100 completan FILE + MAIL? antes de responder; si TL_CLOSE causa G100 se ejecuta una cadena combinada.
+6. G100 usa la hora confirmada en el mismo turno para cerrar el tramo activo antes de CONS.
+7. Preservar P1-STRICT, handoff, tiempos, NO APLICA y control humano del foco ya mejorados.
 
 ARTEFACTOS DE RETOMA
 - `evidencia_sintetica/BotConsultor_V9_description_candidate.txt`
-- `evidencia_sintetica/BotConsultor_V9_instructions_CRL3_candidate.txt`
-- `evidencia_sintetica/BotConsultor_V9_CRL3_resume.md`
+- `evidencia_sintetica/BotConsultor_V9_instructions_CRL4_candidate.txt`
+- `evidencia_sintetica/BotConsultor_V9_CRL4_resume.md`
 - `117_contrato_presentacion_botconsultor.md`
 - `320_plan_pruebas_proyecto.txt`
 - `321_registro_resultados_pruebas.txt`
 
 PROTOCOLO DE RETOMA
-Refrescar main y registrar SHA; leer README/000/002/010/120/230/330 y documentos aplicables; leer P1, 320/321, resume CRL3, Description y CRL3; verificar nuevamente Instructions <=8000; cargar Description V9 + CRL3 en Copilot; abrir chat nuevo; repetir CU3 con correcciones en cero; no editar configuración durante el caso.
+Refrescar main y registrar SHA; leer README/000/002/010/120/230/330 y documentos aplicables; leer P1, 320/321, resume CRL4, Description y CRL4; verificar Instructions <=8000; cargar Description V9 + CRL4 en Copilot; abrir chat nuevo; repetir CU3 con correcciones en cero; no editar configuración durante el caso.
 
 NEXT_GATE
-Ejecutar V9-CRL3/CU3 desde chat nuevo. En la primera respuesta priorizar verificación de P1-STRICT, BASE `.md` automático, Global NO CALCULABLE y únicamente INICIAR/DERIVAR durante PREP.
+Ejecutar V9-CRL4/CU3 desde chat nuevo. Primer gate: P1-STRICT, BASE `.md` automático, Global NO CALCULABLE y checklist exactamente INICIAR/DERIVAR durante PREP.

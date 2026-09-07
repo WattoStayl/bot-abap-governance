@@ -56,3 +56,41 @@ HALLAZGO PRINCIPAL = No se reprodujo el fallo crítico de pérdida/reconstrucci�
 DECISIÓN POST-CU3
 Las desviaciones de formato C01/C04 permanecen como evidencia, pero el formato se gobierna transversalmente por P1 y no será el foco principal del motor lógico CRL2.
 FOCOS CRL2 = persistencia automática; tiempo del emisor en handoff; integridad/cobertura del Global; control humano del foco operativo.
+
+REGISTRO SINTÉTICO
+TEST_ID = T-BOTCONSULTOR-V9-CRL2-CU3
+CHANGE_ID = BOTCONSULTOR-V9-CRL2
+ENVIRONMENT = Microsoft Copilot / handoff sintético mediante expediente Markdown / chat nuevo receptor
+PRECONDITIONS = Description V9 + Instructions CRL2; P1 vigente; caso ACME-DEMO/FI; sin datos operativos reales
+INPUT = Repetición del flujo CU3 hasta retoma por receptor y cierre del bloque de diseño
+EXPECTED = Mejorar CRL1 preservando continuidad, tiempo del emisor, control humano del foco, persistencia automática y cobertura Global, con P1 consistente
+ACTUAL = El handoff generó .md real; el tramo del emisor 09:00→10:30 con duración 1h30 sobrevivió al expediente; el receptor retomó Global 20 % sin heredar horas y abrió su propio tramo solo al INICIAR; el foco no avanzó automáticamente. Persistieron fallos en BASE inicial, alcance/NO APLICA, TL_CLOSE automático, nombre físico/handoff y consistencia visual P1.
+RESULT = FAIL
+EVIDENCE = Evaluación sintética V9-CRL2-CU3 con 11 correcciones: 6 ALTA, 5 MEDIA, 0 CRÍTICA. Sin enlaces ni archivos privados persistidos.
+LIMITATIONS = Smoke test detenido tras confirmar las raíces principales del handoff; no se ejecutó ciclo futuro de implementación/pruebas ni envío real de correo. Las desviaciones posteriores derivadas del árbol ya defectuoso no se duplicaron.
+EXECUTED_BY = HUMANO_EVALUADOR + BOTCONSULTOR
+EXECUTED_AT = 2026-09-07
+
+CORRECCIONES V9-CRL2-CU3
+V9-CRL2-CU3-C01 = MEDIA | P1 vertical no respetado: checklist concatenado horizontalmente.
+V9-CRL2-CU3-C02 = ALTA | BASE no ejecutado: no se creó/entregó .md automático inicial.
+V9-CRL2-CU3-C03 = ALTA | Planificación prematura antes de INICIAR.
+V9-CRL2-CU3-C04 = MEDIA | PREP incorrecto: omitió DERIVAR y pidió dato descubrible no bloqueante.
+V9-CRL2-CU3-C05 = ALTA | Entró en ejecución sin Checklist Global certificado.
+V9-CRL2-CU3-C06 = ALTA | Global inicial no cubrió/justificó correctamente los cinco dominios semánticos.
+V9-CRL2-CU3-C07 = MEDIA | Dato descubrible durante el trabajo tratado como bloqueo para continuar.
+V9-CRL2-CU3-C08 = ALTA | Global amplió el alcance incorporando EJECUCIÓN/PRUEBAS como pendientes en vez de justificar NO APLICA; mezcló además cierre formal con DONEWHEN.
+V9-CRL2-CU3-C09 = ALTA | TL_CLOSE recalculó avance pero no disparó .md automático ni pregunta de correo.
+V9-CRL2-CU3-C10 = MEDIA | Nombre físico del expediente incorporó revisión/estado de handoff en vez de mantener nombre estable.
+V9-CRL2-CU3-C11 = MEDIA | Handoff expresó responsabilidad como ya transferida antes de confirmación del receptor.
+
+COMPARACIÓN CRL2
+CU3 V8 = 24 correcciones / 1 CRÍTICA.
+CU3 V9 CRL1 = 13 correcciones / 0 CRÍTICAS.
+CU3 V9 CRL2 = 11 correcciones / 0 CRÍTICAS.
+REDUCCIÓN CRL2 vs CRL1 = 2 correcciones = 15,4 %.
+REDUCCIÓN CRL2 vs V8 = 13 correcciones = 54,2 %.
+MEJORA CUALITATIVA = CRL2 corrigió la persistencia del tramo horario del emisor, mantuvo continuidad del Global y reforzó el control humano del foco.
+
+DECISIÓN POST-CRL2
+Construir V9 CRL3 preservando las mejoras de CRL2 y priorizando P1 estricto: checklist Markdown vertical coherente en toda respuesta. Corregir además BASE, alcance/NO APLICA, TL_CLOSE automático, nombre físico estable y confirmación de handoff.

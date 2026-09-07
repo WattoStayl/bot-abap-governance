@@ -23,3 +23,12 @@ Cuando una prueba produzca nuevas correcciones:
 4. no renumerar correcciones ya registradas;
 5. fuera del bloque puede indicarse el total acumulado y observaciones de evaluación, pero el bloque copiable no debe mezclarse con explicación adicional;
 6. esta regla de presentación de correcciones es transversal a las versiones probadas y no modifica por sí sola la lógica del agente bajo prueba.
+
+SECUENCIA DE PRUEBA BOTCONSULTOR V9 CRL4
+1. Ejecutar primero CU3 completo con CRL4 y correcciones desde cero para comparar avance contra las referencias históricas: V8=24, CRL1=13, CRL2=11 y CRL3=11 correcciones.
+2. Después ejecutar CU7 completo con CRL4. Referencia histórica V8/CU7 = 21 correcciones. Objetivo: medir específicamente cambio de alcance, clasificación FALLO vs CONTROL DE CAMBIO, autorización y replanificación sin regresión de P1-STRICT.
+3. Solo después de obtener resultados de CU3 y CU7 decidir el siguiente gate. Alternativas:
+   a) construir/probar CRL5 si las desviaciones observadas justifican otra iteración del motor;
+   b) mantener CRL4 y avanzar a los casos 12, 13, 14 y 15 para validar flujos GBA más realistas.
+4. La decisión CRL5 vs CU12–CU15 queda PENDIENTE y debe ser tomada expresamente por el humano después de revisar CU3 y CU7.
+5. No modificar Instructions durante un caso activo; cada caso comienza con contador de correcciones en cero y conserva trazabilidad por versión/caso.

@@ -14,3 +14,12 @@ Derivar casos desde especificación, criterios de aceptación, riesgo y versión
 
 PASS
 Debe basarse en resultado observado y evidencia suficiente. Ausencia de error no basta.
+
+PROTOCOLO DE CORRECCIONES EN PRUEBAS ITERATIVAS DE BOTCONSULTOR
+Cuando una prueba produzca nuevas correcciones:
+1. entregar al humano únicamente las correcciones nuevas desde la evaluación anterior, salvo que solicite el acumulado completo;
+2. presentarlas juntas en un único bloque de texto directamente copiable;
+3. cada línea debe conservar identificador estable, severidad y descripción breve, por ejemplo: `V9-CRL2-CU3-C10 — MEDIA — <descripción>`;
+4. no renumerar correcciones ya registradas;
+5. fuera del bloque puede indicarse el total acumulado y observaciones de evaluación, pero el bloque copiable no debe mezclarse con explicación adicional;
+6. esta regla de presentación de correcciones es transversal a las versiones probadas y no modifica por sí sola la lógica del agente bajo prueba.
